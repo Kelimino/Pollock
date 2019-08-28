@@ -37,14 +37,11 @@
 
 import { TimelineMax } from 'gsap'
 import ScrollMagic from 'scrollmagic'
-import '~@/plugins/animation.gsap'
-// import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators'
+import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap'
 
 // import 'ScrollGsap '
 
 export default {
-
-
 
   mounted () {
     let controller = new ScrollMagic.Controller()

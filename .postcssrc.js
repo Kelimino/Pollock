@@ -6,5 +6,12 @@ module.exports = {
     "postcss-url": {},
     // to edit target browsers: use "browserslist" field in package.json
     "autoprefixer": {}
-  } 
+  },
+
+  resolve: {
+    modules: [
+        'scrollmagic',
+        path.resolve(__dirname, 'src')
+    ]
+}
 }
