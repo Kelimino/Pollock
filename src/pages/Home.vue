@@ -36,12 +36,18 @@
 // require('scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap')
 
 import { TimelineMax } from 'gsap'
+import 'gsap/CSSPlugin'
 import ScrollMagic from 'scrollmagic'
-import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap'
+import 'animation.gsap'
 
 // import 'ScrollGsap '
 
 export default {
+
+// created() {
+// let animationGsap = document.createElement('script');    animationGsap.setAttribute('src',"https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.js");
+// document.head.appendChild(animationGsap);
+// },
 
   mounted () {
     let controller = new ScrollMagic.Controller()
