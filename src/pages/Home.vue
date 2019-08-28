@@ -20,37 +20,16 @@
   </div>
 </template>
 <script>
-
-// import {TimelineMax} from 'gsap/TweenMax'
-// import ScrollMagic from 'ScrollMagic'
-// // import 'ScrollMagicGSAP'
-
-// import 'animation.gsap'
-// import 'debug.addIndicators'
-// require('animation.gsap');
-// require('debug.addIndicators');
-
-// // require('~/nodes_modules/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap')
-// // require('@/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js')
-
-// require('scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap')
-
-import { TimelineMax } from 'gsap'
-import 'gsap/CSSPlugin'
+import TweenMax from 'gsap/all'
 import ScrollMagic from 'scrollmagic'
-import 'animation.gsap'
-
-// import 'ScrollGsap '
+import 'ScrollMagicGSAP'
 
 export default {
 
-// created() {
-// let animationGsap = document.createElement('script');    animationGsap.setAttribute('src',"https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.js");
-// document.head.appendChild(animationGsap);
-// },
+
 
   mounted () {
-    let controller = new ScrollMagic.Controller()
+     let controller = new ScrollMagic.Controller()
 
     let tl = new TimelineMax()
 
