@@ -1,11 +1,16 @@
 
-*, :after, :before {
-  box-sizing: border-box;
-}
+*{
+
+margin: 0;
+padding: 0;
+
+  :after, :before {
+    box-sizing: border-box;
+  }
+
+} 
 body {
   height: 100%;
-  padding: 0;
-  margin: 0;
 }
 
 .content {
@@ -25,14 +30,13 @@ body {
 
 .title{
 
-  display: none;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  height: 100vh;
+  display: inline-block;
+  text-align: center;
+  height: 400px;
+  margin-top: 300px;
 }
 #stage{
-  display: none;
   height:100vh;
   width: 100%;
   background: #262626;
@@ -82,9 +86,4 @@ body {
 
 .box6 {
   background-color: #b84b4b;
-}
-
-p{
-
-  height: 900px;
 }

@@ -11,11 +11,6 @@
 
     </div>
 
-
-
-
-
-
     <div id="stage">
       <div class="box box1">1</div>
       <div class="box box2">2</div>
@@ -36,23 +31,16 @@ export default {
   mounted () {
     let controller = new ScrollMagic.Controller()
 
-
-
     // scene1
 
     let MainTitle = new TimelineMax()
     MainTitle
-    .staggerFrom('.title h1', 2, { opacity: 0, y: -20 })
-    .staggerFrom('.title p', 2, {
-      delay: 0.5,
-      opacity: 0,
-      y: -20
-    })
+      .staggerFrom('.title h1', 1, { opacity: 0, y: -20 })
+      .staggerFrom('.title p', 1, {opacity: 0,y: -20}, "+=0.5")
 
     new ScrollMagic.Scene({
       triggerElement: '.title',
-      triggerHook: 0,
-      offset: 0
+      offset: 200
     })
       .setTween(MainTitle)
       .addIndicators()
