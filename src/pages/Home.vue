@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class ="title">
     <h1>hello world</h1>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, pariatur eius exercitationem
@@ -30,6 +30,33 @@ export default {
   mounted () {
     var controller = new ScrollMagic.Controller()
 
+    // // title animation
+
+    // var MainTitle = new TimelineMax()
+
+    // MainTitle.from('.title h1', 2,{
+    //   opacity:0,
+    //   y: -20
+
+    // })
+    // MainTitle.from('.title p', 2,{
+    //   delay: 0.5,
+    //   opacity:0,
+    //   y: -20
+
+    // })
+
+    //   new ScrollMagic.scene({
+    //   triggerElement: '.title',
+    //   triggerHook:0,
+    //   offset:0,
+
+    // })
+    // .setTween(MainTitle)
+    // .addIndicators()
+    // .addTo(controller)
+
+    // box elements animation
     var tl = new TimelineMax()
 
     tl.staggerFrom('.box', 1.25, {
@@ -47,10 +74,10 @@ export default {
       triggerElement: '#stage',
       triggerHook: 0,
       offset: -100,
-      duration: 30,
+      duration: 30
     })
 
-    // .setPin('#stage')
+      .setPin('#stage')
       .setClassToggle('.box1', 'large')
       .setTween(tl)
       .addTo(controller)
