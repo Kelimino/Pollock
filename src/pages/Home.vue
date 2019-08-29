@@ -20,10 +20,10 @@
   </div>
 </template>
 <script>
-import ScrollMagic from 'scrollmagic' 
+import ScrollMagic from 'scrollmagic'
 import { TimelineMax } from 'gsap'
-import 'animation.gsap'
-
+import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'
+import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'
 
 export default {
 
@@ -45,13 +45,15 @@ export default {
 
     new ScrollMagic.Scene({
       triggerElement: '#stage',
-      triggerHook: 0
+      triggerHook: 0,
+      offset: -100
     })
 
     // .setPin('#stage')
       .setClassToggle('.box1', 'large')
       .setTween(tl)
       .addTo(controller)
+      .addIndicators()
   }
 }
 </script>
