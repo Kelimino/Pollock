@@ -20,11 +20,10 @@
   </div>
 </template>
 <script>
-import * as ScrollMagic from 'scrollmagic' // Or use scrollmagic-with-ssr to avoid server rendering problems
-import { TimelineMax } from 'gsap' // Also works with TweenLite and TimelineLite
-import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap'
+import ScrollMagic from 'scrollmagic' 
+import { TimelineMax } from 'gsap'
+import 'animation.gsap'
 
-ScrollMagicPluginGsap(ScrollMagic, TimelineMax)
 
 export default {
 
