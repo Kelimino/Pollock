@@ -20,18 +20,18 @@
   </div>
 </template>
 <script>
-import TweenMax from 'gsap/all'
-import ScrollMagic from 'scrollmagic'
-import 'ScrollMagicGSAP'
+import * as ScrollMagic from 'scrollmagic' // Or use scrollmagic-with-ssr to avoid server rendering problems
+import { TimelineMax } from 'gsap' // Also works with TweenLite and TimelineLite
+import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap'
+
+ScrollMagicPluginGsap(ScrollMagic, TimelineMax)
 
 export default {
 
-
-
   mounted () {
-     let controller = new ScrollMagic.Controller()
+    var controller = new ScrollMagic.Controller()
 
-    let tl = new TimelineMax()
+    var tl = new TimelineMax()
 
     tl.staggerFrom('.box', 1.25, {
       scale: 0,
