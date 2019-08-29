@@ -1,11 +1,20 @@
 <template>
-  <div class="title">
+  <div>
+
+    <div class="title">
     <h1>hello world</h1>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, pariatur eius exercitationem
       iusto facere sapiente iste neque cum dolore sunt laborum ad illum nobis eum quam deserunt?
       Veritatis, dolorum voluptates!
     </p>
+
+    </div>
+
+
+
+
+
 
     <div id="stage">
       <div class="box box1">1</div>
@@ -27,10 +36,14 @@ export default {
   mounted () {
     let controller = new ScrollMagic.Controller()
 
+
+
     // scene1
 
     let MainTitle = new TimelineMax()
-    MainTitle.from('.title h1', 2, { opacity: 0, y: -20 }).from('.title p', 2, {
+    MainTitle
+    .staggerFrom('.title h1', 2, { opacity: 0, y: -20 })
+    .staggerFrom('.title p', 2, {
       delay: 0.5,
       opacity: 0,
       y: -20
