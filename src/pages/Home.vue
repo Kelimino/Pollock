@@ -46,7 +46,8 @@ export default {
     new ScrollMagic.Scene({
       triggerElement: '#stage',
       triggerHook: 0,
-      offset: -100
+      offset: -100,
+      duration: 30,
     })
 
     // .setPin('#stage')
