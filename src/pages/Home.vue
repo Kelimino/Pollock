@@ -30,7 +30,7 @@
 </template>
 <script>
 import ScrollMagic from 'scrollmagic'
-import { TimelineMax, Power1 } from 'gsap'
+import { TweenMax, TimelineMax, Power1, Elastic, CSSPlugin } from 'gsap/TweenMax'
 import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'
 import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'
 
@@ -42,8 +42,8 @@ export default {
     let tl = new TimelineMax({ paused: true })
 
     tl.to('.menu', 1.6, { top: 0, ease: Power1.easeInOut })
-      .staggerFrom('.menu ul li', { y: 100, opacity: 0, ease: Power1.easeOut })
-      .reverse()
+    tl.staggerFrom('.menu ul li', { y: 100, opacity: 0, ease: Power1.easeOut })
+    // tl.reverse()
 
     navBtn.on('click', (e) => {
       if (tl.isActive()) {
