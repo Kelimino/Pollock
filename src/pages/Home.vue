@@ -26,14 +26,9 @@ import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap'
 
 ScrollMagicPluginGsap(ScrollMagic, TimelineMax)
 
-
 export default {
 
-
   mounted () {
-
-
-
     var controller = new ScrollMagic.Controller()
 
     var tl = new TimelineMax()
