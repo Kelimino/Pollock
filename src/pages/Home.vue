@@ -9,9 +9,9 @@
 
     <div class="menu">
       <ul>
-        <li>Work</li>
-        <li>About</li>
-        <li>Contact</li>
+        <li class="link">Work</li>
+        <li class="link">About</li>
+        <li class="link">Contact</li>
       </ul>
     </div>
 
@@ -30,7 +30,7 @@
 </template>
 <script>
 import ScrollMagic from 'scrollmagic'
-import { TweenMax, TimelineMax, Power1, Elastic, CSSPlugin } from 'gsap/TweenMax'
+import { TimelineLite, Expo, Power2 } from 'gsap/TweenMax'
 import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'
 import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'
 
@@ -38,19 +38,30 @@ export default {
   mounted () {
     /// menu-open
     var navBtn = document.querySelector('.nav-button')
+    var linkNav = document.querySelector('.menu ul')
 
-    let tl = new TimelineMax({ paused: true })
+    let tl = new TimelineLite({ paused: true })
 
-    tl.to('.menu', 1.6, { top: 0, ease: Power1.easeInOut })
-    tl.staggerFrom('.menu ul li', { y: 100, opacity: 0, ease: Power1.easeOut })
-    // tl.reverse()
+    tl.to('.menu', 1.1, { height: '100%', ease: Expo.easeInOut })
+    tl.staggerFrom('.menu ul li', 0.5, { y: -100, opacity: 0, ease: Power2.easeOut }, '+=0.5')
+    tl.reverse()
 
-    navBtn.on('click', (e) => {
+    navBtn.addEventListener('click', (e) => {
       if (tl.isActive()) {
         e.preventDefault()
         e.stopPropagation()
         return false
       }
+      tl.reversed(!tl.reversed())
+    })
+
+    linkNav.find('li').addEventListener('click', (e) => {
+      if (tl.isActive()) {
+        e.preventDefault()
+        e.stopPropagation()
+        return false
+      }
+      tl.reversed(!tl.reversed())
     })
 
     // end menu
@@ -59,8 +70,8 @@ export default {
 
     // scene1
 
-    let MainTitle = new TimelineMax()
-    MainTitle.staggerFrom('.title h1', 1, { opacity: 0, y: -20 }).staggerFrom(
+    let MainTitle = new TimelineLite()
+    MainTitle.staggerFrom('.title h1', 1.2, { opacity: 0, delay: 0.4, y: -20 }).staggerFrom(
       '.title p',
       1,
       { opacity: 0, y: -20 },
