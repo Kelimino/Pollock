@@ -1,7 +1,7 @@
 <template>
   <div>
     <img src alt="logo" class="logo" />
-    <div class="nav-button" v-on:click="open = !open" v-bind:class="{open:open}">
+    <div class="nav-button" v-on:click.stop.prevent ="open = !open" v-bind:class="{open:open}">
       <span></span>
       <span></span>
     </div>
@@ -46,12 +46,9 @@ export default {
   computed: {},
 
   mounted () {
-
-
-
-
     //  menu-open
-    let navBtn = document.querySelector('.nav-button')
+    const navBtn = document.querySelector('.nav-button')
+    const userList = document.querySelectorAll('.menu ul li')
 
     const tl = new TimelineLite({ paused: true })
 
@@ -73,27 +70,28 @@ export default {
       tl.reversed(!tl.reversed())
     })
 
-    // const menuBack = document.querySelectorAll(".menu");
-    const userList = document.querySelectorAll('.menu ul li')
+    const menuBack = document.querySelectorAll('.menu')
 
     for (let user of userList) {
       user.addEventListener('mouseover', e => {
-        e.preventDefault()
-        e.stopPropagation()
-        return false
+        
+        menuBack.classList.add('backImage')
       })
     }
 
     for (let user of userList) {
       user.addEventListener('click', e => {
-      
         if (tl.isActive()) {
           e.preventDefault()
           e.stopPropagation()
           return false
         }
-        tl.reversed(!tl.reversed());
-        navBtn.removeClass('open')
+        tl.reversed(!tl.reversed())
+        if (navBtn.classList.contains('open'), e) {
+          navBtn.classList.remove('open')
+        } else {
+          navBtn.classList.add('open')
+        }
       })
     }
 
@@ -126,7 +124,6 @@ export default {
 
     new ScrollMagic.Scene({
       triggerElement: '.title',
-
       offset: 0
     })
 
