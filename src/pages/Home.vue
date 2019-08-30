@@ -38,7 +38,7 @@ export default {
   mounted () {
     /// menu-open
     var navBtn = document.querySelector('.nav-button')
-    var linkNav = document.querySelector('.menu ul')
+    var linkNav = document.querySelector('.menu ul li')
 
     let tl = new TimelineLite({ paused: true })
 
@@ -55,7 +55,7 @@ export default {
       tl.reversed(!tl.reversed())
     })
 
-    linkNav.find('li').addEventListener('click', (e) => {
+    linkNav.addEventListener('click', (e) => {
       if (tl.isActive()) {
         e.preventDefault()
         e.stopPropagation()
