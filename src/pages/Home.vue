@@ -9,14 +9,16 @@
 
     <div class="menu">
       <ul>
-        <li class="link">Work</li>
-        <li class="link">About</li>
-        <li class="link">Contact</li>
+        <li>Work</li>
+        <li>About</li>
+        <li>Contact</li>
       </ul>
     </div>
 
     <img src="@/assets/img/back.jpg" alt="back" class="back" />
     <img src="@/assets/img/logo.png" alt="background" />
+
+    <div class="bloc"></div>
 
     <div class="title">
       <h1>Hello world</h1>
@@ -36,17 +38,22 @@ import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'
 
 export default {
   mounted () {
-    /// menu-open
-    var navBtn = document.querySelector('.nav-button')
-    var linkNav = document.querySelector('.menu ul li')
 
-    let tl = new TimelineLite({ paused: true })
+    //  menu-open
+    const navBtn = document.querySelector('.nav-button')
+
+    const tl = new TimelineLite({ paused: true })
 
     tl.to('.menu', 1.1, { height: '100%', ease: Expo.easeInOut })
-    tl.staggerFrom('.menu ul li', 0.5, { y: -100, opacity: 0, ease: Power2.easeOut }, '+=0.5')
+    tl.staggerFrom(
+      '.menu ul li',
+      0.5,
+      { y: -100, opacity: 0, ease: Power2.easeOut },
+      '-= 1.1'
+    )
     tl.reverse()
 
-    navBtn.addEventListener('click', (e) => {
+    navBtn.addEventListener('click', e => {
       if (tl.isActive()) {
         e.preventDefault()
         e.stopPropagation()
@@ -55,7 +62,25 @@ export default {
       tl.reversed(!tl.reversed())
     })
 
-    linkNav.addEventListener('click', (e) => {
+    const menuBack = document.querySelectorAll('.menu')
+    const userList = document.querySelectorAll('.menu ul li')
+
+        for ( let user of userList) {
+    user.addEventListener('mouseover', e => {
+      
+      menuBack.css("background-color","red");
+      e.preventDefault()
+      e.stopPropagation()
+      return false
+      
+      })
+        }
+
+
+
+    for ( let user of userList) {
+    user.addEventListener('click', e => {
+      console.log(this)
       if (tl.isActive()) {
         e.preventDefault()
         e.stopPropagation()
@@ -63,20 +88,23 @@ export default {
       }
       tl.reversed(!tl.reversed())
     })
+    }
 
     // end menu
 
-    let controller = new ScrollMagic.Controller()
+
+
+    const controller = new ScrollMagic.Controller()
 
     // scene1
 
-    let MainTitle = new TimelineLite()
-    MainTitle.staggerFrom('.title h1', 1.2, { opacity: 0, delay: 0.4, y: -20 }).staggerFrom(
-      '.title p',
-      1,
-      { opacity: 0, y: -20 },
-      '-=.8'
-    )
+    const MainTitle = new TimelineLite()
+    MainTitle.staggerFrom('.title h1', 1.2, {
+      opacity: 0,
+      delay: 0.4,
+      y: -20
+    }).staggerFrom('.title p', 1, { opacity: 0, y: -20 }, '-= 0.8')
+    .fromTo('.bloc', 1, { opacity: 0, ease: Power2.easeOut},{opacity:1, scale:1.1, ease: Power2.easeOut}, '-= 0.3')
 
     new ScrollMagic.Scene({
       triggerElement: '.title',
@@ -87,5 +115,6 @@ export default {
       .addIndicators()
       .addTo(controller)
   }
+
 }
 </script>
