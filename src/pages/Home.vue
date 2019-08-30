@@ -1,8 +1,7 @@
 <template>
   <div>
     <img src alt="logo" class="logo" />
-    <div class="nav-button">
-      <span></span>
+    <div class="nav-button" v-on:click="open = !open" v-bind:class="{open:open}">
       <span></span>
       <span></span>
     </div>
@@ -37,10 +36,22 @@ import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'
 import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'
 
 export default {
+  data () {
+    return {
+      open: false
+    }
+  },
+
+  methods: {},
+  computed: {},
+
   mounted () {
 
+
+
+
     //  menu-open
-    const navBtn = document.querySelector('.nav-button')
+    let navBtn = document.querySelector('.nav-button')
 
     const tl = new TimelineLite({ paused: true })
 
@@ -62,37 +73,31 @@ export default {
       tl.reversed(!tl.reversed())
     })
 
-    const menuBack = document.querySelectorAll('.menu')
+    // const menuBack = document.querySelectorAll(".menu");
     const userList = document.querySelectorAll('.menu ul li')
 
-        for ( let user of userList) {
-    user.addEventListener('mouseover', e => {
-      
-      menuBack.css("background-color","red");
-      e.preventDefault()
-      e.stopPropagation()
-      return false
-      
-      })
-        }
-
-
-
-    for ( let user of userList) {
-    user.addEventListener('click', e => {
-      console.log(this)
-      if (tl.isActive()) {
+    for (let user of userList) {
+      user.addEventListener('mouseover', e => {
         e.preventDefault()
         e.stopPropagation()
         return false
-      }
-      tl.reversed(!tl.reversed())
-    })
+      })
+    }
+
+    for (let user of userList) {
+      user.addEventListener('click', e => {
+      
+        if (tl.isActive()) {
+          e.preventDefault()
+          e.stopPropagation()
+          return false
+        }
+        tl.reversed(!tl.reversed());
+        navBtn.removeClass('open')
+      })
     }
 
     // end menu
-
-
 
     const controller = new ScrollMagic.Controller()
 
@@ -103,18 +108,31 @@ export default {
       opacity: 0,
       delay: 0.4,
       y: -20
-    }).staggerFrom('.title p', 1, { opacity: 0, y: -20 }, '-= 0.8')
-    .fromTo('.bloc', 1, { opacity: 0, ease: Power2.easeOut},{opacity:1, scale:1.1, ease: Power2.easeOut}, '-= 0.3')
+    })
+      .fromTo(
+        '.title p',
+        1,
+        { opacity: 0, y: -20 },
+        { opacity: 1, y: 0 },
+        '-= 0.8'
+      )
+      .fromTo(
+        '.bloc',
+        1,
+        { opacity: 0, ease: Power2.easeOut },
+        { opacity: 1, scale: 1.1, ease: Power2.easeOut },
+        '-= 0.3'
+      )
 
     new ScrollMagic.Scene({
       triggerElement: '.title',
 
       offset: 0
     })
+
       .setTween(MainTitle)
       .addIndicators()
       .addTo(controller)
   }
-
 }
 </script>
