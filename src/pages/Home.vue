@@ -14,7 +14,9 @@
       </ul>
     </div>
 
-    <img src="@/assets/img/back.jpg" alt="back" class="back" />
+    <div class="banner">
+      <video src="@/assets/video.mp4" autoplay muted loop></video>
+    </div>
     <img src="@/assets/img/logo.png" alt="background" />
 
     <div class="bloc"></div>
@@ -34,6 +36,7 @@ import ScrollMagic from 'scrollmagic'
 import { TimelineLite, Expo, Power2 } from 'gsap/TweenMax'
 import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'
 import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'
+
 
 export default {
   data () {
@@ -70,12 +73,8 @@ export default {
       tl.reversed(!tl.reversed())
     })
 
-    const menuBack = document.querySelectorAll('.menu')
-
     for (let user of userList) {
       user.addEventListener('mouseover', e => {
-        
-        menuBack.classList.add('backImage')
       })
     }
 
@@ -87,7 +86,7 @@ export default {
           return false
         }
         tl.reversed(!tl.reversed())
-        if (navBtn.classList.contains('open'), e) {
+        if (navBtn.classList.contains('open')) {
           navBtn.classList.remove('open')
         } else {
           navBtn.classList.add('open')
@@ -101,12 +100,14 @@ export default {
 
     // scene1
 
+
     const MainTitle = new TimelineLite()
-    MainTitle.staggerFrom('.title h1', 1.2, {
-      opacity: 0,
-      delay: 0.4,
-      y: -20
-    })
+    .fromTo(
+        '.title h1',
+        1,
+        { opacity: 0, y: -20 },
+        { opacity: 1, y: 0 }
+      )
       .fromTo(
         '.title p',
         1,

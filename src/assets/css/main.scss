@@ -12,6 +12,33 @@ padding: 0;
 body, html{
   height: 100%;
 }
+
+.banner{
+
+
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+
+
+  video{
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
+    pointer-events: none;
+  }
+}
   .nav-button{
 
     position: fixed;
@@ -92,6 +119,7 @@ body, html{
   left: 0;
 
   background: rgba(0, 0, 0, 0.7);
+  transition: all 5s cubic-bezier(0.075, 0.82, 0.165, 1) 0.5;
   color: #FFF;
 
   display: flex;
@@ -125,11 +153,6 @@ body, html{
 
 
   }
-}
-
-.backImage{
-
-  background: url('../../assets/img/back2.jpg') center no-repeat;
 }
 
 .back{
