@@ -15,15 +15,12 @@
     </div>
     <div class="grid"></div>
 
-    <figure>
-    <figcaption>Listen to the T-Rex:</figcaption>
-    <audio
-        autoplay
-        src="@/assets/sound.mp3">
-            Your browser does not support the
-            <code>audio</code> element.
+<div id="player">
+    <audio autoplay controls hidden loop id="sound" >
+     <source src="@/assets/sound.mp3" type="audio/mpeg">
     </audio>
-</figure>
+    <button type="button">Mute sound</button>
+</div>
 
     <!-- <div class="banner">
       <video src="@/assets/video.mp4" autoplay muted loop></video>
@@ -35,6 +32,43 @@
       <h1>Amazon</h1>
       <p>Home of thousand of species</p>
       <button class="btn">Explore</button>
+    </div>
+
+    <div class="animal-wrap">
+
+      <div class="parrot animal">
+
+        <img src="@/assets/img/parrot.jpg" alt= "Parrot">
+        <p>Parrot blue</p>
+
+
+      </div>
+      <div class="monkey animal">
+
+        <img src="@/assets/img/monkey.jpg" alt= "Monkey">
+        <p>PMonkey</p>
+
+
+      </div>
+      <div class="tiger animal">
+
+        <img src="@/assets/img/tiger.jpg" alt= "Tiger">
+        <p>Tiger</p>
+
+
+      </div>
+
+      <div class="lizard animal">
+
+        <img src="@/assets/img/lizard.jpg" alt= "lizard">
+        <p>Lizard</p>
+
+
+      </div>
+
+
+
+
     </div>
 
   </div>
@@ -52,16 +86,21 @@ export default {
     }
   },
 
-  methods: {},
-  computed: {},
-
   mounted () {
+    
+
+    // audio
+    const soundBack = document.querySelector('#sound').volume = 0.05;
+    
+
+
     // cursor
     const cursor = document.querySelector('.cursor')
-
     document.addEventListener('mousemove', e => {
       cursor.setAttribute('style', 'top:' + e.pageY + 'px; left:' + e.pageX + 'px;')
     })
+
+    
 
     //  menu-open
     const navBtn = document.querySelector('.nav-button')
