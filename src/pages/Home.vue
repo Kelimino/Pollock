@@ -57,170 +57,186 @@
         <p>Lizard</p>
       </div>
     </div>
+
+
+
+<b-container class="animal-detail">
+  <b-row>
+    <b-col cols="6" ><img src="@/assets/img/parrot.jpg" alt="Parrot" /></b-col>
+    <b-col cols="6">          <section>
+            <h2>Parrot Blue</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque officia numquam odio beatae maxime eius quae
+               libero aperiam ad corporis nostrum eligendi incidunt quisquam suscipit qui ratione voluptatibus, earum vero?</p>
+          </section>
+            <section>
+            <h2>Parrot Blue</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque officia numquam odio beatae maxime eius quae
+               libero aperiam ad corporis nostrum eligendi incidunt quisquam suscipit qui ratione voluptatibus, earum vero?</p>
+          </section>
+            <section>
+            <h2>Parrot Blue</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque officia numquam odio beatae maxime eius quae
+               libero aperiam ad corporis nostrum eligendi incidunt quisquam suscipit qui ratione voluptatibus, earum vero?</p>
+          </section></b-col>
+  </b-row>
+</b-container>
   </div>
 </template>
 <script>
-import ScrollMagic from "scrollmagic";
-import { TimelineLite, Expo, Power2 } from "gsap/TweenMax";
-import "scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js";
-import "scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js";
+import ScrollMagic from 'scrollmagic'
+import { TimelineLite, Expo, Power2 } from 'gsap/TweenMax'
+import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'
+import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'
 
 export default {
-  data() {
+  data () {
     return {
       open: false
-    };
+    }
   },
 
-  mounted() {
+  mounted () {
     // audio
-    document.querySelector("#sound").volume = 0.05;
+    document.querySelector('#sound').volume = 0.05
 
     // cursor
-    const cursor = document.querySelector(".cursor");
+    const cursor = document.querySelector('.cursor')
 
-    document.addEventListener("mousemove", e => {
+    document.addEventListener('mousemove', e => {
       cursor.setAttribute(
-        "style",
-        "top:" + e.pageY + "px; left:" + e.pageX + "px;"
-      );
-    });
+        'style',
+        'top:' + e.pageY + 'px; left:' + e.pageX + 'px;'
+      )
+    })
 
-    const animalHover = document.querySelector(".animal-wrap .animal");
+    const animalHover = document.querySelector('.animal-wrap .animal')
 
-    animalHover.addEventListener("mouseenter", e => {
-      console.log(cursor);
+    animalHover.addEventListener('mouseenter', e => {
+      console.log(cursor)
 
-      cursor.classList.toggle("cursorHover");
-      //  cursor.css("color","red")
-    });
+      cursor.style.width = '100px'
+    })
 
     //  menu-open
-    const navBtn = document.querySelector(".nav-button");
-    const userList = document.querySelectorAll(".menu ul li");
+    const navBtn = document.querySelector('.nav-button')
+    const userList = document.querySelectorAll('.menu ul li')
 
-    const tl = new TimelineLite({ paused: true });
+    const tl = new TimelineLite({ paused: true })
 
-    tl.to(".menu", 1.1, { height: "100%", ease: Expo.easeInOut });
-    tl.staggerFrom(
-      ".menu ul li",
-      0.5,
-      { y: -100, opacity: 0, ease: Power2.easeOut },
-      "-= 1.1"
-    );
-    tl.reverse();
+    tl.to('.menu', 1.1, { height: '100%', ease: Expo.easeInOut })
+      .staggerFrom(
+        '.menu ul li',
+        0.5,
+        { y: -100, opacity: 0, ease: Power2.easeOut },
+        '-= 1.1'
+      )
+      .reverse()
 
-    navBtn.addEventListener("click", e => {
+    navBtn.addEventListener('click', e => {
       if (tl.isActive()) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
+        e.preventDefault()
+        e.stopPropagation()
+        return false
       }
-      tl.reversed(!tl.reversed());
-    });
+      tl.reversed(!tl.reversed())
+    })
 
     for (let user of userList) {
-      user.addEventListener("click", e => {
+      user.addEventListener('click', e => {
         if (tl.isActive()) {
-          e.preventDefault();
-          e.stopPropagation();
-          return false;
+          e.preventDefault()
+          e.stopPropagation()
+          return false
         }
-        tl.reversed(!tl.reversed());
-        if (navBtn.classList.contains("open")) {
-          navBtn.classList.remove("open");
+        tl.reversed(!tl.reversed())
+        if (navBtn.classList.contains('open')) {
+          navBtn.classList.remove('open')
         } else {
-          navBtn.classList.add("open");
+          navBtn.classList.add('open')
         }
-      });
+      })
     }
 
     // end menu
 
     // scene1
 
-    const MainTitle = new TimelineLite();
-    const exploreBtn = document.querySelector(".explore");
+    const MainTitle = new TimelineLite({onComplete: onComplete})
+    const exploreBtn = document.querySelector('.explore')
 
-    MainTitle.to(".back", 20, { scale: 1.2, ease: Power2.easeOut });
-    MainTitle.fromTo(
-      ".title h1",
-      2,
-      { opacity: 0, y: -20, ease: Power2.easeOut },
-      { opacity: 1, y: 0 },
-      "-= 19"
-    );
-    MainTitle.fromTo(
-      ".title h2",
-      2,
-      { opacity: 0, y: -20, ease: Power2.easeOut },
-      { opacity: 1, y: 0 },
-      "-= 19"
-    );
-    MainTitle.to(
-      ".title h2",
-      2,
-      { opacity: 0, y: 20, ease: Power2.easeOut },
-      "-= 17"
-    );
-    MainTitle.to(
-      ".title h1",
-      2,
-      { opacity: 0, y: 20, ease: Power2.easeOut },
-      "-= 17"
-    );
+    MainTitle.to('.back', 12, { scale: 1.2, ease: Power2.easeOut })
+      .fromTo(
+        '.title h1',
+        2,
+        { opacity: 0, y: -20, ease: Power2.easeOut },
+        { opacity: 1, y: 0 },
+        '-= 11'
+      )
+      .fromTo(
+        '.title h2',
+        2,
+        { opacity: 0, y: -20, ease: Power2.easeOut },
+        { opacity: 1, y: 0 },
+        '-= 11'
+      )
+      .to(
+        '.title h2',
+        2,
+        { opacity: 0, y: 20, ease: Power2.easeOut },
+        '-= 9'
+      )
+      .to(
+        '.title h1',
+        2,
+        { opacity: 0, y: 20, ease: Power2.easeOut },
+        '-= 9'
+      )
 
-    MainTitle.fromTo(
-      ".title p",
-      2,
-      { opacity: 0, y: -20, ease: Power2.easeOut },
-      { opacity: 1, y: 0 },
-      "-= 16"
-    );
-    MainTitle.to(
-      ".title p",
-      2,
-      { opacity: 0, y: 20, ease: Power2.easeOut },
-      "-= 14"
-    );
-    MainTitle.fromTo(
-      exploreBtn,
-      2,
-      { opacity: 0, y: -20, ease: Power2.easeOut },
-      { opacity: 1, y: 0,
-      
-      onComplete : onComplete},
-      "-= 13"
-    );
+      .fromTo(
+        '.title p',
+        2,
+        { opacity: 0, y: -20, ease: Power2.easeOut },
+        { opacity: 1, y: 0 },
+        '-= 8'
+      )
+      .to(
+        '.title p',
+        2,
+        { opacity: 0, y: 20, ease: Power2.easeOut },
+        '-= 6'
+      )
+      .fromTo(
+        exploreBtn,
+        2,
+        { opacity: 0, y: -20, ease: Power2.easeOut },
+        { opacity: 1, y: 0
 
-    function onComplete (){
-    const tl2 = new TimelineLite({ paused: true });
-    tl2.to(exploreBtn, 1.2, {autoAlpha: 0, y: -20, ease: Expo.easeInOut })
-    tl2.to('.back', 2, {scale: 1.1, ease: Expo.easeInOut})
-    tl2.staggerFrom(".animal-wrap",2,{ autoAlpha: 0, y: -30, ease: Expo.easeInOut })
-    tl2.to(".animal-wrap",2,{ autoAlpha: 1, y: 0, ease: Expo.easeInOut}, " -= 0.5 ")
-    tl2.reverse();
+        },
+        '-= 5'
+      )
 
-    exploreBtn.addEventListener("click", e => {
-      if (tl2.isActive()) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      }
-      tl2.reversed(!tl2.reversed());
+    function onComplete () {
+      const tl2 = new TimelineLite({ paused: true })
+      tl2
+        .to(exploreBtn, 1.2, {autoAlpha: 0, y: -20, ease: Expo.easeInOut })
+        .to('.back', 2, {scale: 1.1, ease: Expo.easeInOut})
+        .staggerFrom('.animal-wrap', 2, { autoAlpha: 0, y: -20, ease: Expo.easeInOut}, '-= 1.5')
+        .reverse()
 
-      
-    });
-
-
+      exploreBtn.addEventListener('click', e => {
+        if (tl2.isActive()) {
+          e.preventDefault()
+          e.stopPropagation()
+          return false
+        }
+        tl2.reversed(!tl2.reversed())
+      })
     }
 
-
-
-    const controller = new ScrollMagic.Controller();
+    const controller = new ScrollMagic.Controller()
     new ScrollMagic.Scene({
-      triggerElement: "nav-button"
-    }).addTo(controller);
+      triggerElement: 'nav-button'
+    }).addTo(controller)
   }
-};
+}
 </script>
