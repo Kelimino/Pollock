@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div container-fluid >
+    <div class="cursor"></div>
     <div class="nav-button" v-on:click.stop.prevent ="open = !open" v-bind:class="{open:open}">
       <span></span>
       <span></span>
@@ -12,19 +13,28 @@
         <li>Contact</li>
       </ul>
     </div>
+    <div class="grid"></div>
 
-    <div class="banner">
+    <figure>
+    <figcaption>Listen to the T-Rex:</figcaption>
+    <audio
+        autoplay
+        src="@/assets/sound.mp3">
+            Your browser does not support the
+            <code>audio</code> element.
+    </audio>
+</figure>
+
+    <!-- <div class="banner">
       <video src="@/assets/video.mp4" autoplay muted loop></video>
-      <div class="bloc"></div>
+      <div class="bloc"></div> -->
+      <img src="@/assets/img/back3.jpg" alt="back" class="back">
 
     <div class="title">
-      <h1>Hello world</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, pariatur eius exercitationem
-        iusto facere sapiente iste neque cum dolore sunt laborum ad illum nobis eum quam deserunt?
-        Veritatis, dolorum voluptates!
-      </p>
-    </div>
+      <h2>Welcome to the</h2>
+      <h1>Amazon</h1>
+      <p>Home of thousand of species</p>
+      <button class="btn">Explore</button>
     </div>
 
   </div>
@@ -46,6 +56,13 @@ export default {
   computed: {},
 
   mounted () {
+    // cursor
+    const cursor = document.querySelector('.cursor')
+
+    document.addEventListener('mousemove', e => {
+      cursor.setAttribute('style', 'top:' + e.pageY + 'px; left:' + e.pageX + 'px;')
+    })
+
     //  menu-open
     const navBtn = document.querySelector('.nav-button')
     const userList = document.querySelectorAll('.menu ul li')
@@ -93,40 +110,63 @@ export default {
 
     // end menu
 
-    const controller = new ScrollMagic.Controller()
-
     // scene1
 
     const MainTitle = new TimelineLite()
-      .fromTo(
-        '.title h1',
-        1,
-        { opacity: 0, y: -20 },
-        { opacity: 1, y: 0 }
-      )
-      .fromTo(
-        '.title p',
-        1,
-        { opacity: 0, y: -20 },
-        { opacity: 1, y: 0 },
-        '-= 0.8'
-      )
-      .fromTo(
-        '.bloc',
-        1,
-        { opacity: 0, ease: Power2.easeOut },
-        { opacity: 1, scale: 1.1, ease: Power2.easeOut },
-        '-= 0.3'
-      )
+    MainTitle.to(
+      '.back',
+      20,
+      { scale: 1.2, ease: Power2.easeOut }
+    )
+    MainTitle.fromTo(
+      '.title h1',
+      2,
+      { opacity: 0, y: -20, ease: Power2.easeOut },
+      { opacity: 1, y: 0 },
+      '-= 19'
+    )
+    MainTitle.fromTo(
+      '.title h2',
+      2,
+      { opacity: 0, y: -20, ease: Power2.easeOut },
+      { opacity: 1, y: 0 },
+      '-= 19'
+    )
+    MainTitle.to(
+      '.title h2',
+      2,
+      { opacity: 0, y: 20, ease: Power2.easeOut },
+      '-= 17'
+    )
+    MainTitle.to(
+      '.title h1',
+      2,
+      { opacity: 0, y: 20, ease: Power2.easeOut },
+      '-= 17'
+    )
 
+    MainTitle.fromTo(
+      '.title p',
+      2,
+      { opacity: 0, y: -20, ease: Power2.easeOut },
+      { opacity: 1, y: 0 },
+      '-= 16'
+    )
+    MainTitle.fromTo(
+      '.title .btn',
+      2,
+      { opacity: 0, y: -20, ease: Power2.easeOut },
+      { opacity: 1, y: 0 },
+      '-= 16'
+    )
+
+    const controller = new ScrollMagic.Controller()
     new ScrollMagic.Scene({
-      triggerElement: '.title',
-      offset: 0
+      triggerElement: 'nav-button'
     })
 
-      .setTween(MainTitle)
-      .addIndicators()
-      .addTo(controller)
+      .addTo(controller
+      )
   }
 }
 </script>
