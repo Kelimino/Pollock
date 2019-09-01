@@ -41,6 +41,18 @@ body{
   z-index: 9999;
   transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
 }
+.cursorHover{
+  width: 40px;
+  height: 40px;
+  background: #FFF;
+
+  &:after{
+
+    content: "Discover";
+    display: block;
+    color: #000;
+  }
+}
 
 #player{
 
@@ -92,14 +104,14 @@ body{
   right: 3%;
   width: 30px;
   height: 30px;
-  z-index: 10;
+  z-index: 999999;
   cursor: pointer;
   
   
   span{
     
     display: block;
-    background: #FFF;
+    background: red;
     width: 100%;
     height: 2px;
     margin-bottom: 4px;
@@ -253,7 +265,8 @@ body{
   
   h1{
     
-    
+    min-width: 20%;
+    margin: 0 auto;
     font-size: 5rem;
     font-family: $title;
     
@@ -273,14 +286,15 @@ body{
     transform: translate(-50%,-50%);
   }
   
-  .btn{
+  .explore{
     
-    width: 60px;
-    height: 60px;
-    background: #FFF;
-    color: grey;
+    width: 80px;
+    height: 80px;
+    background: transparent;
+    border:solid 1px #FFF;
+    color:#FFF;
+    font-family: $title;
     border-radius: 50%;
-    box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.3);
     position: absolute;
     padding: 6px;
     top:55%;
@@ -288,11 +302,65 @@ body{
     transform: translate(-50%,-50%);
     transform-origin: center;
     transition: all 0.2s ease-out;
+
+    &:after{
+
+    width: 90px;
+    height: 90px;
+    content: "";
+    display: block;
+    background: transparent;
+    border: solid 1px rgba(255, 255, 255, 0.5);
+    font-family: $title;
+    border-radius: 50%;
+    position: absolute;
+    padding: 6px;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transform-origin: center;
+    transition: all 0.2s ease-out;
+    animation: 5s Grow infinite forwards;
+
+
+    }
+
+    @keyframes Grow {
+      0%{
+        width: 90px;
+    height: 90px;
+    opacity: 1;
+      }
+
+      50%{
+        width: 120px;
+    height: 120px;
+    opacity: 0.2;
+      }
+
+    
+      100% {
+        width: 90px;
+    height: 90px;
+    opacity: 1;
+      }
+    }
     
     &:hover{
       transform: translate(-50%,-50%) scale(1.2) !important;
-      transform-origin: initial !important;
+      transform-origin: center !important;
+
+      &:after{
+
+        opacity: 0;
+      }
       
+    }
+    &:focus{
+
+      box-shadow: none;
+      outline: none;
+      border: 0;
     }
     
     
@@ -311,27 +379,64 @@ body{
   height: 100vh;
   z-index: 10;
 
+  .parrot{
+
+    bottom: 30%;
+    left:20%;
+  }
+  .tiger{
+
+    top: 38%;
+    left:30%;
+  }
+  .lizard{
+
+    top: 50%;
+    right: 8%;
+  }
+  .monkey{
+
+    top: 40%;
+    right: 30%;
+  }
+
+  .crocodile{
+
+    top: 45%;
+    right: 50%;
+  }
 
 
-    .parrot{
+
+    .animal{
 
       position: absolute;
-      bottom: 20%;
-      left: 20%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      &:hover{
+
+
+        img{
+
+          transform: scale(1.2);
+        }
+      }
 
 
       &:after{
 
-        content: "";
-    display: block;
-    width: 1px;
-    height: 40px;
-    background: #FFF;
-    left: 50%;
-    bottom: -70%;
-    -webkit-transform: translate(-50% -50%);
-    transform: translate(-50% -50%);
-    position: absolute;
+        content:"";
+        display: block;
+        width: 1px;
+        height: 30px;
+        background: #FFF;
+        left: 50%;
+        bottom: -90%;
+        transform: translate(-50% -50%);
       }
      
 
@@ -343,6 +448,7 @@ body{
     object-fit: cover;
     object-position: center;
     border: solid 2px #FFF;
+    transition: all 0.3s ease-out;
       }
 
       p{
@@ -350,6 +456,7 @@ body{
         font-family: $text;
 
         color: #FFF;
+        margin: 0px 0 9px 0;
       }
 
     }
