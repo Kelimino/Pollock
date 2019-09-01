@@ -1,6 +1,5 @@
 <template>
   <div>
-    <img src alt="logo" class="logo" />
     <div class="nav-button" v-on:click.stop.prevent ="open = !open" v-bind:class="{open:open}">
       <span></span>
       <span></span>
@@ -16,10 +15,7 @@
 
     <div class="banner">
       <video src="@/assets/video.mp4" autoplay muted loop></video>
-    </div>
-    <img src="@/assets/img/logo.png" alt="background" />
-
-    <div class="bloc"></div>
+      <div class="bloc"></div>
 
     <div class="title">
       <h1>Hello world</h1>
@@ -29,6 +25,8 @@
         Veritatis, dolorum voluptates!
       </p>
     </div>
+    </div>
+
   </div>
 </template>
 <script>
@@ -36,7 +34,6 @@ import ScrollMagic from 'scrollmagic'
 import { TimelineLite, Expo, Power2 } from 'gsap/TweenMax'
 import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'
 import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'
-
 
 export default {
   data () {
@@ -100,9 +97,8 @@ export default {
 
     // scene1
 
-
     const MainTitle = new TimelineLite()
-    .fromTo(
+      .fromTo(
         '.title h1',
         1,
         { opacity: 0, y: -20 },
