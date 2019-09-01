@@ -7,7 +7,7 @@
 
     <div class="menu">
       <ul>
-        <li>Work</li>
+        <li> Work</li>
         <li>About</li>
         <li>Contact</li>
       </ul>
