@@ -82,7 +82,14 @@ body{
     height: 50px;
     border-radius: 50%;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
-    background: url('/assets/img/volume.svg') center no-repeat, ;
+    background: #FFF url("/assets/img/volume.svg") center no-repeat;
+    background-size: 100%;
+
+    &:focus{
+
+      box-shadow: none;
+      outline: none;
+    }
   }
 }
 
