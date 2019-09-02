@@ -53,49 +53,39 @@ body{
     color: #000;
   }
 }
+.logo{
+  position: relative;
 
+
+  img{
+
+        width: 100px;
+    height: auto;
+    z-index: 15;
+    position: absolute;
+    top: 2%;
+    left: 1%;
+  }
+}
 #player{
 
   position: absolute;
-  top: 10;
-  left: 10;
-  z-index: 10;
+  bottom: 10%;
+  right: 6%;
+  z-index: 15;
 
-  a{
+  .mute{
 
     position: absolute;
-    top: 100px;
-    z-index: 15;
+
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+    background: url('/assets/img/volume.svg') center no-repeat, ;
   }
 }
 
-.banner{
-  
-  
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: -2;
-  
-  
-  
-  video{
-    
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    
-    height: 100vh;
-    object-fit: cover;
-    object-position: center;
-    pointer-events: none;
-  }
-}
 .nav-button{
   
   position: fixed;
@@ -104,7 +94,7 @@ body{
   right: 3%;
   width: 30px;
   height: 30px;
-  z-index: 999999;
+  z-index: 15;
   cursor: pointer;
   
   
@@ -153,24 +143,12 @@ body{
   }
   
 }
-
-.bloc{
-  
-  width: 500px;
-  height: 500px;
-  border: solid 10px rgba(240, 255, 0, 1);
-  transform: translate(-50%,-50%);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-}
-
 .menu{
   
   width: 100%;
   height: 0;
   position: absolute;
-  z-index: 4;
+  z-index: 14;
   top: 0;
   
   left: 0;
