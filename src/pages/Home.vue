@@ -223,7 +223,7 @@ export default {
         2,
         { opacity: 0, y: -20, ease: Power2.easeOut },
         { opacity: 1, y: 0 },
-        '-= 5'
+        '-= 0.5'
       )
 
     function onComplete () {
