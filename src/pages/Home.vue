@@ -20,7 +20,7 @@
     <div class="grid"></div>
 
     <div id="player">
-      <audio id="sound" autoplay controls hidden loop preload="true">
+      <audio id="sound" controls hidden>
         <source src="@/assets/sound.mp3" type="audio/mpeg" />
       </audio>
       <a class="mute"></a>
@@ -61,7 +61,9 @@
 
     <div class="animal-detail">
       <b-row v-for="(animal,index) in animals" :key="index" v-bind:id="animal.id">
-        <b-col cols="6"><img :src= "animal.picture" /></b-col>
+        <b-col cols="6">
+          <img :src="animal.picture" />
+        </b-col>
         <b-col cols="6">
           <section>
             <h2>{{animal.name}}</h2>
@@ -103,6 +105,7 @@ export default {
     // audio
     var audioTrack = document.querySelector('#sound')
     var audioControl = document.querySelector('#player .mute')
+
     function initAudio () {
       audioTrack.volume = 0.05
       audioTrack.muted = false
@@ -122,7 +125,7 @@ export default {
           'url(~@/assets/img/muted.svg) center no repeat'
       }
     }
-    window.addEventListener('load', initAudio)
+    window.addEventListener('load', initAudio())
 
     // cursor
     const cursor = document.querySelector('.cursor')
@@ -252,32 +255,50 @@ export default {
       triggerElement: 'nav-button'
     }).addTo(controller)
 
-
-    //open modal animals
+    // open modal animals
 
     const covertDetail = document.querySelector('.animal-detail')
-    const detailContent = document.querySelector('.animal-detail .row')
-    const animalBtn = document.querySelector('.animal-wrap .animal')
+    const detailContent = document.querySelectorAll('.animal-detail .row')
+    const animalBtn = document.querySelectorAll('.animal')
     const timeDetail = new TimelineLite({ paused: true })
 
+    for (let animalDetail of detailContent) {
+      var animalId = animalDetail.getAttribute('id')
+    }
+
+    console.log(animalBtn)
+    console.log(detailContent)
+
     timeDetail
-      .from(covertDetail, 2, { autoAlpha: 0, ease: Power2.easeOut })
       .from(
-        detailContent,
+        covertDetail,
         2,
-        { autoAlpha: 0, scale: 1.2, ease: Power2.easeOut },
+        { autoAlpha: 0 }
+      )
+      .from(
+        animalId,
+        2,
+        { autoAlpha: 1, scale: 1.2, ease: Power2.easeOut },
         ' -= 0.5'
       )
 
-    animalBtn.addEventListener('click', function () {
-      timeDetail.play()
+    animalBtn.forEach(animal => {
+      animal.addEventListener('click', function (e) {
+        e.preventDefault()
+        var id = animal.getAttribute('data-target')
+        console.log(id)
+        console.log(animalId)
+        if (animalId === id) {
+          timeDetail.play()
+        } else {
+          timeDetail.reverse()
+        }
+      })
     })
 
     window.addEventListener('click', e => {
       if (timeDetail.isActive()) {
         e.preventDefault()
-        e.stopPropagation()
-        return false
       }
       timeDetail.reversed(!timeDetail.reversed())
     })
