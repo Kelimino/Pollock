@@ -48,7 +48,7 @@
         <img src="@/assets/img/tiger.jpg" alt="Tiger" />
         <p>Tiger</p>
       </div>
-      <div class="crocodile animal">
+      <div class="crocodile animal" data-target="#crocodile">
         <img src="@/assets/img/crocodile.jpg" alt="crocodile" />
         <p>Crococdile</p>
       </div>
@@ -95,6 +95,12 @@ export default {
           id: 'tiger',
           description: 'a wild tiger',
           picture: require('@/assets/img/tiger.jpg')
+        },
+        {
+          name: 'crocodile',
+          id: 'crocodile',
+          description: 'a crocodile',
+          picture: require('@/assets/img/crocodile.jpg')
         }
       ],
       open: false
@@ -117,32 +123,24 @@ export default {
     function muteAudio () {
       if (audioTrack.muted) {
         audioTrack.muted = false
-        audioControl.style.background =
-          'url(~@/assets/img/volume.svg) center no repeat'
+        audioControl.classList.remove('muteOn')
       } else {
         audioTrack.muted = true
-        audioControl.style.background =
-          'url(~@/assets/img/muted.svg) center no repeat'
+        audioControl.classList.add('muteOn')
       }
+      console.log(audioControl)
     }
-    window.addEventListener('load', initAudio())
+    window.addEventListener('load', initAudio)
 
     // cursor
     const cursor = document.querySelector('.cursor')
 
     document.addEventListener('mousemove', e => {
+      e.preventDefault()
       cursor.setAttribute(
         'style',
         'top:' + e.pageY + 'px; left:' + e.pageX + 'px;'
       )
-    })
-
-    const animalHover = document.querySelector('.animal-wrap .animal')
-
-    animalHover.addEventListener('mouseenter', e => {
-      console.log(cursor)
-
-      cursor.style.width = '100px'
     })
 
     //  menu-open
@@ -192,38 +190,38 @@ export default {
     const MainTitle = new TimelineLite({ onComplete: onComplete })
     const exploreBtn = document.querySelector('.explore')
 
-    MainTitle.to('.back', 12, { scale: 1.2, ease: Power2.easeOut })
+    MainTitle.to('.back', 10, { scale: 1.2, ease: Power2.easeOut })
       .fromTo(
         '.title h1',
         2,
         { opacity: 0, y: -20, ease: Power2.easeOut },
         { opacity: 1, y: 0 },
-        '-= 11'
+        '-= 9'
       )
       .fromTo(
         '.title h2',
         2,
         { opacity: 0, y: -20, ease: Power2.easeOut },
         { opacity: 1, y: 0 },
-        '-= 11'
+        '-= 9'
       )
-      .to('.title h2', 2, { opacity: 0, y: 20, ease: Power2.easeOut }, '-= 9')
-      .to('.title h1', 2, { opacity: 0, y: 20, ease: Power2.easeOut }, '-= 9')
+      .to('.title h2', 2, { opacity: 0, y: 20, ease: Power2.easeOut }, '-= 7')
+      .to('.title h1', 2, { opacity: 0, y: 20, ease: Power2.easeOut }, '-= 7')
 
       .fromTo(
         '.title p',
         2,
         { opacity: 0, y: -20, ease: Power2.easeOut },
         { opacity: 1, y: 0 },
-        '-= 8'
+        '-= 6'
       )
-      .to('.title p', 2, { opacity: 0, y: 20, ease: Power2.easeOut }, '-= 6')
+      .to('.title p', 2, { opacity: 0, y: 20, ease: Power2.easeOut }, '-= 4')
       .fromTo(
         exploreBtn,
-        2,
+        1,
         { opacity: 0, y: -20, ease: Power2.easeOut },
         { opacity: 1, y: 0 },
-        '-= 0.5'
+        '-= 3'
       )
 
     function onComplete () {
@@ -266,24 +264,16 @@ export default {
       var animalId = animalDetail.getAttribute('id')
     }
 
-    console.log(animalBtn)
-    console.log(detailContent)
-
     timeDetail
-      .from(
-        covertDetail,
-        2,
-        { autoAlpha: 0 }
-      )
-      .from(
-        animalId,
-        2,
-        { autoAlpha: 1, scale: 1.2, ease: Power2.easeOut },
-        ' -= 0.5'
+      .from(covertDetail, 1, { autoAlpha: 0 })
+      .staggerFrom(
+        detailContent,
+        1,
+        { autoAlpha: 0, scale: 1.2, ease: Power2.easeOut }, "-=0.5"
       )
 
     animalBtn.forEach(animal => {
-      animal.addEventListener('click', function (e) {
+      animal.addEventListener('click', e => {
         e.preventDefault()
         var id = animal.getAttribute('data-target')
         console.log(id)
@@ -293,6 +283,7 @@ export default {
         } else {
           timeDetail.reverse()
         }
+        return false
       })
     })
 
