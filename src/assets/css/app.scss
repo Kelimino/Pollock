@@ -20,14 +20,16 @@ $red: #FF0000;
   }
   
 } 
-body{
-  height: auto;
-  width: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
-.viewport {
+html {
+    scroll-behavior: smooth;
+  }
+  
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  
+  .viewport {
     overflow: hidden;
     position: fixed;
     height: 100%;
@@ -48,6 +50,20 @@ body{
     transform-style: preserve-3d;
   }
   
+  .content {
+    width: 60%; 
+    padding-top:50px;
+  }
+  
+  .img-container {
+    margin: 0 0 50px;
+    
+    img {
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+    }
+  }
 .logo{
 
     position: fixed;
