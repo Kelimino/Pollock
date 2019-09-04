@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="viewport">
     <div id="scroll-container" class="scroll-container">
       <div class="content">
@@ -53,6 +54,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>

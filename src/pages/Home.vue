@@ -11,16 +11,6 @@
       <span></span>
       <span></span>
     </div>
-
-    <!-- <header>
-      <img src alt class="logo" />
-
-      <div class="burger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </header>-->
     <section class="main row">
       <img src="@/assets/img/jackson.jpg" alt="pollock" />
       <div class="overlayImg"></div>
