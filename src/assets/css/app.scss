@@ -1,0 +1,66 @@
+@import '@/assets/css/main.scss';
+
+
+.logo{
+
+    position: fixed;
+    top: 2%;
+    left: 2%;
+    z-index: 9000;
+
+    img{
+
+        width: 200px;
+    }
+}
+nav{
+
+    position: fixed;
+    top: 10%;
+    right: -8px;
+    transform: rotate(90deg);
+    z-index: 9000;
+
+    a{
+
+        text-decoration: none;
+        transform-origin: center;
+        margin-right: 20px;
+
+        font-family: $title;
+        color: #000;
+
+        &:focus, &:hover{
+
+            text-decoration: none;
+
+            color: #000;
+        }
+    }
+}
+.social{
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+    z-index: 9000;
+
+    ul{
+
+        li{
+
+            list-style: none;
+            margin-top: 12px;
+
+            &:first-child{
+
+                margin-top: 0;
+            }
+
+            img{
+
+                width: 30px;
+            }
+        }
+    }
+
+}

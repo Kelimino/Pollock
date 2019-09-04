@@ -9,6 +9,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 require('@/assets/css/main.scss')
+require('@/assets/css/app.scss')
 
 Vue.config.productionTip = false
 

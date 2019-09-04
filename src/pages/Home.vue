@@ -1,38 +1,160 @@
 <template>
   <div container-fluid>
-
     <div class="overlay-loader">
-       <span></span>
+      <span></span>
       <span></span>
     </div>
+
+    <div class="overlay-loader2"></div>
 
     <div class="grid">
       <span></span>
       <span></span>
     </div>
 
+    <!-- <header>
+      <img src alt class="logo" />
+
+      <div class="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </header> -->
+    <section class="main row">
+      <img src="@/assets/img/jackson.jpg" alt="pollock">
+      <div class="overlayImg"></div>
+      <ul>
+        <li>American Artist</li>
+        <li>Abstract Impressionism</li>
+        <li></li>
+      </ul>
+      <h1>Jackson pollock</h1>
+      <h2>12'52</h2>
+      <h3>The greatest abtract Artist</h3>
+      <div class="scroll">Scroll  <span></span>    </div>
+    </section>
+
+    <section class="second row parallax">
+      <div class="back"></div>
+      <div class="content">
+        <h2>Jackson pollock, his marvellous work</h2>
+        <p>A one of a find painter with a speacila technic, the dropping</p>
+      </div>
+
+    </section>
   </div>
 </template>
 <script>
-// import ScrollMagic from 'scrollmagic'
-import { TimelineMax, Expo, Power2 } from 'gsap/TweenMax'
-// import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'
-// import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'
+import ScrollMagic from 'scrollmagic'
+import { TimelineMax, TweenMax, Power2 } from 'gsap/TweenMax'
+import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'
+import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'
 
 export default {
   data: function () {
-    return {
-
-    }
+    return {}
   },
 
   mounted () {
-    const tl = new timelineMax()
-    const overlay = document.querySelector('.overlay-loader')
-    const span = document.querySelector('.overlay-loader span')
+    const tl = new TimelineMax({ onStart: MainTitle })
+    const overLay = document.querySelector('.overlay-loader')
+    const overLay2 = document.querySelector('.overlay-loader2')
+    const spanLine = document.querySelectorAll('.overlay-loader span')
 
-    tl.to(overlay, 2, { y: -100, autoAlpha: 0, ease: Expo, Power2})
-      .staggerTo(span, 2, { y: -100, height: 0, ease: Expo, Power2})
+    tl.staggerFromTo(
+      spanLine,
+      3,
+      { height: '100vh', autoAlpha: 1 },
+      { y: -100, height: 0, autoAlpha: 0, ease: Power2.easeOut }
+    )
+      .to(
+        overLay,
+        1.5,
+        { y: '-100%', height: 0, delay: 1, ease: Power2.easeinOut },
+        '-= 3.4'
+      )
+      .to(
+        overLay2,
+        1.5,
+        { y: '-100%', height: 0, ease: Power2.easeinOut },
+        '-= 2.2'
+      )
+
+    function MainTitle () {
+      const bigTitle = document.querySelector('.main h1')
+      const H2 = document.querySelector('.main h2')
+      const UL = document.querySelector('.main ul')
+      const H3 = document.querySelector('.main h3')
+      const Scroll = document.querySelector('.main .scroll')
+      const Overlay = document.querySelector('.overlayImg')
+
+      const tl2 = new TimelineMax({})
+      tl2
+        .fromTo(
+          bigTitle,
+          1,
+          { x: -100, color: '#OOO', autoAlpha: 0, ease: Power2.easeinOut },
+          {
+            x: 0,
+            color: '#FF0000',
+            autoAlpha: 1,
+            delay: 2.4,
+            ease: Power2.easeinOut
+          }
+        )
+        .from(H2, 1, { x: +100, autoAlpha: 0, ease: Power2.easeinOut }, '-= 1')
+        .from(
+          UL,
+          1,
+          { y: -100, autoAlpha: 0, ease: Power2.easeinOut },
+          '-= 1'
+        )
+        .from(H3, 1, { y: 20, autoAlpha: 0, ease: Power2.easeinOut }, '-= 1')
+        .to(Overlay, 1, { x: '100%', ease: Power2.easeinOut }, '-= 1')
+        .from(Scroll, 1, { y: 20, autoAlpha: 0, ease: Power2.easeinOut }, '-= 1')
+    }
+
+    const controller = new ScrollMagic.Controller()
+    const SectionActive = document.querySelector('.main')
+    const SectionActive2 = document.querySelector('.second')
+    const imgPara = document.querySelector('.second .back')
+    const ContenPara = document.querySelector('.second .content')
+    const Pollock = document.querySelector('.main img')
+
+    const scene = new ScrollMagic.Scene({
+      offset: 100,
+      duration: '100%',
+      triggerElement: SectionActive,
+      triggerHook: 0,
+      duration: '30%'
+      // reverse: false
+    })
+      .setPin(SectionActive, {pushFollowers: false})
+      .setTween(TweenMax.to(Pollock, 10, {autoAlpha: 0, y: 200, ease: Power2.easeOut}))
+      // .addIndicators({
+      //   name: 'Main',
+      //   color: '#FFOOO'
+      // })
+      .addTo(controller);
+
+    const tlPara = new TimelineMax({})
+
+    tlPara.from(ContenPara, 5, {y: -1000, autoAlpha: 0, ease: Power2.easeOut})
+      .from(imgPara, 2, {y: '-50%', width: '150%', ease: Power2.easeOut}, 0)
+
+    const sceneParallax = new ScrollMagic.Scene({
+      offset: 200,
+      duration: '100%',
+      triggerElement: SectionActive2,
+      triggerHook: 200
+    })
+      .setTween(tlPara)
+      // .addIndicators({
+      //   name: 'Second',
+      //   color: '#FFOOO'
+      // })
+      .addTo(controller);
   }
 }
 </script>
