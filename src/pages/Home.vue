@@ -20,9 +20,9 @@
         <span></span>
         <span></span>
       </div>
-    </header> -->
+    </header>-->
     <section class="main row">
-      <img src="@/assets/img/jackson.jpg" alt="pollock">
+      <img src="@/assets/img/jackson.jpg" alt="pollock" />
       <div class="overlayImg"></div>
       <ul>
         <li>American Artist</li>
@@ -32,7 +32,10 @@
       <h1>Jackson pollock</h1>
       <h2>12'52</h2>
       <h3>The greatest abtract Artist</h3>
-      <div class="scroll">Scroll  <span></span>    </div>
+      <div class="scroll">
+        Scroll
+        <span></span>
+      </div>
     </section>
 
     <section class="second row parallax">
@@ -41,7 +44,6 @@
         <h2>Jackson pollock, his marvellous work</h2>
         <p>A one of a find painter with a speacila technic, the dropping</p>
       </div>
-
     </section>
   </div>
 </template>
@@ -104,15 +106,15 @@ export default {
           }
         )
         .from(H2, 1, { x: +100, autoAlpha: 0, ease: Power2.easeinOut }, '-= 1')
-        .from(
-          UL,
-          1,
-          { y: -100, autoAlpha: 0, ease: Power2.easeinOut },
-          '-= 1'
-        )
+        .from(UL, 1, { y: -100, autoAlpha: 0, ease: Power2.easeinOut }, '-= 1')
         .from(H3, 1, { y: 20, autoAlpha: 0, ease: Power2.easeinOut }, '-= 1')
         .to(Overlay, 1, { x: '100%', ease: Power2.easeinOut }, '-= 1')
-        .from(Scroll, 1, { y: 20, autoAlpha: 0, ease: Power2.easeinOut }, '-= 1')
+        .from(
+          Scroll,
+          1,
+          { y: 20, autoAlpha: 0, ease: Power2.easeinOut },
+          '-= 1'
+        )
     }
 
     const controller = new ScrollMagic.Controller()
@@ -124,24 +126,26 @@ export default {
 
     const scene = new ScrollMagic.Scene({
       offset: 100,
-      duration: '100%',
       triggerElement: SectionActive,
       triggerHook: 0,
       duration: '30%'
       // reverse: false
     })
-      .setPin(SectionActive, {pushFollowers: false})
-      .setTween(TweenMax.to(Pollock, 10, {autoAlpha: 0, y: 200, ease: Power2.easeOut}))
+      .setPin(SectionActive, { pushFollowers: false })
+      .setTween(
+        TweenMax.to(Pollock, 10, { autoAlpha: 0, y: 200, ease: Power2.easeOut })
+      )
       // .addIndicators({
       //   name: 'Main',
       //   color: '#FFOOO'
       // })
-      .addTo(controller)
+    scene.addTo(controller)
 
     const tlPara = new TimelineMax({})
 
-    tlPara.from(ContenPara, 5, {y: -1000, autoAlpha: 0, ease: Power2.easeOut})
-      .from(imgPara, 2, {y: '-50%', width: '150%', ease: Power2.easeOut}, 0)
+    tlPara
+      .from(ContenPara, 5, { y: -1000, autoAlpha: 0, ease: Power2.easeOut })
+      .from(imgPara, 2, { y: '-50%', width: '150%', ease: Power2.easeOut }, 0)
 
     const sceneParallax = new ScrollMagic.Scene({
       offset: 200,
@@ -154,7 +158,7 @@ export default {
       //   name: 'Second',
       //   color: '#FFOOO'
       // })
-      .addTo(controller)
+    sceneParallax.addTo(controller)
   }
 }
 </script>

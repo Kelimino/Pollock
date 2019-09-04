@@ -23,7 +23,7 @@
         </div>
         <!--  REPEAT  -->
 
-       <div class="img-container">
+        <div class="img-container">
           <img src="@/assets/img/pol1.jpg" alt />
         </div>
         <div class="img-container">
@@ -37,7 +37,7 @@
         </div>
         <!--  REPEAT  -->
 
-<div class="img-container">
+        <div class="img-container">
           <img src="@/assets/img/pol1.jpg" alt />
         </div>
         <div class="img-container">
@@ -56,14 +56,12 @@
 </template>
 
 <script>
-import {TweenMax} from 'gsap/TweenMax'
+import { TweenLite } from 'gsap/TweenMax'
 export default {
   name: 'About',
 
   data: function () {
-    return {
-
-    }
+    return {}
   },
 
   mounted () {
@@ -118,7 +116,10 @@ export default {
         y: -scroller.y
       })
 
-      requestId = scroller.scrollRequest > 0 ? requestAnimationFrame(updateScroller) : null
+      requestId =
+        scroller.scrollRequest > 0
+          ? requestAnimationFrame(updateScroller)
+          : null
     }
 
     function onScroll () {
