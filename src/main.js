@@ -8,8 +8,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
-
-require('@/assets/js/mouse.js')
 require('@/assets/css/main.scss')
 Vue.config.productionTip = false
 
