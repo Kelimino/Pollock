@@ -1,29 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Anton&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Satisfy&display=swap');
+@import '@/assets/css/app.scss';
 
-$title: 'Anton', sans-serif;;
-$text: 'Abril Fatface', cursive;
-$sign: 'Satisfy', cursive;
-
-$left: 33.63%;
-$bleft: 66.33%;
-$red: #FF0000;
-
-*{
-  
-  margin: 0;
-  padding: 0;
-  
-  :after, :before {
-    box-sizing: border-box;
-  }
-  
-} 
-body{
-  height: auto;
-  width: 100%;
-  overflow-x: hidden;
-}
 .overlay-loader{
   
   position:fixed;
