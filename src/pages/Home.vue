@@ -136,7 +136,7 @@ export default {
       //   name: 'Main',
       //   color: '#FFOOO'
       // })
-      .addTo(controller);
+      .addTo(controller)
 
     const tlPara = new TimelineMax({})
 
@@ -154,7 +154,7 @@ export default {
       //   name: 'Second',
       //   color: '#FFOOO'
       // })
-      .addTo(controller);
+      .addTo(controller)
   }
 }
 </script>
