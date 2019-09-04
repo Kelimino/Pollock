@@ -7,7 +7,6 @@
     <router-link to="/about">About</router-link>
     </nav>
 
-    
       <div class="social">
     <ul>
       <li><a href=""><img src="@/assets/icon/fb.svg" alt=""></a></li>
@@ -29,23 +28,20 @@ import { TimelineMax, TweenMax, Power2 } from 'gsap/TweenMax'
 export default {
   name: 'App',
 
-  mounted (){
-
+  mounted () {
     const introTl = new TimelineMax({})
 
     const Logo = document.querySelector('.logo')
     const Menu = document.querySelector('nav')
-    const Social = document.querySelector ('.social')
+    const Social = document.querySelector('.social')
 
-    introTl.from(Logo, 1, { autoAlpha:0, y:-50, delay: 3, ease:Power2.easeOut})
-            .from(Menu, 1, { autoAlpha:0, y:-50, ease:Power2.easeOut}, "-= 1.2")
-            .from(Social, 1, { autoAlpha:0, y: 50, ease:Power2.easeOut}, "-= 1.2");
+    introTl.from(Logo, 1, { autoAlpha: 0, y: -50, delay: 3, ease: Power2.easeOut})
+      .from(Menu, 1, { autoAlpha: 0, y: -50, ease: Power2.easeOut}, '-= 1.2')
+      .from(Social, 1, { autoAlpha: 0, y: 50, ease: Power2.easeOut}, '-= 1.2')
 
-  Menu.addEventListener('click', e =>{
-     console.log(e.target)
-
-  })
-
+    Menu.addEventListener('click', e => {
+      console.log(e.target)
+    })
   }
 }
 
