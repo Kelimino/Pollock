@@ -1,7 +1,6 @@
 <template>
 <div class='viewport'  data-scrollbar container-fluid>
 
-
     <div>
              <h1>About Me</h1>
         <p>
@@ -11,7 +10,6 @@
         </p>
 
               <div class="content">
-
 
         <div class="img-container" data-scrollbar >
           <img src="@/assets/img/pol1.jpg" alt />
@@ -28,11 +26,7 @@
         <!--  REPEAT  -->
       </div>
 
-
     </div>
-   
-
-
 
 </div>
 </template>
@@ -48,12 +42,11 @@ export default {
   },
 
   mounted () {
-const scrollEl = document.querySelector('.viewport')
-const scrollbar = Scrollbar.init(scrollEl, {
-  damping: 0.05,
-  continuousScrolling: true,
-});
-
+    const scrollEl = document.querySelector('.viewport')
+    Scrollbar.init(scrollEl, {
+      damping: 0.05,
+      continuousScrolling: true
+    })
   }
 }
 </script>

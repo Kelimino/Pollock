@@ -1,16 +1,6 @@
 <template>
   <div class='viewport'  data-scrollbar container-fluid>
-    <div class="overlay-loader">
-      <span></span>
-      <span></span>
-    </div>
 
-    <div class="overlay-loader2"></div>
-
-    <div class="grid">
-      <span></span>
-      <span></span>
-    </div>
     <section class="main row">
       <img src="@/assets/img/jackson.jpg" alt="pollock" />
       <div class="overlayImg"></div>
@@ -45,78 +35,48 @@ import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'
 import Scrollbar from 'smooth-scrollbar'
 
 export default {
+  name: 'Home',
   data: function () {
     return {}
   },
 
   mounted () {
+    const scrollEl = document.querySelector('.viewport')
+    Scrollbar.init(scrollEl, {
+      damping: 0.05,
+      continuousScrolling: true
+    })
 
-const scrollEl = document.querySelector('.viewport')
-const scrollbar = Scrollbar.init(scrollEl, {
-  damping: 0.05,
-  continuousScrolling: true,
-});
+    const bigTitle = document.querySelector('.main h1')
+    const H2 = document.querySelector('.main h2')
+    const UL = document.querySelector('.main ul')
+    const H3 = document.querySelector('.main h3')
+    const Scroll = document.querySelector('.main .scroll')
+    const Overlay = document.querySelector('.overlayImg')
 
-
-
-
-    const tl = new TimelineMax({ onStart: MainTitle })
-    const overLay = document.querySelector('.overlay-loader')
-    const overLay2 = document.querySelector('.overlay-loader2')
-    const spanLine = document.querySelectorAll('.overlay-loader span')
-
-    tl.staggerFromTo(
-      spanLine,
-      3,
-      { height: '100vh', autoAlpha: 1 },
-      { y: -100, height: 0, autoAlpha: 0, ease: Power2.easeOut }
-    )
-      .to(
-        overLay,
-        1.5,
-        { y: '-100%', height: 0, delay: 1, ease: Power2.easeinOut },
-        '-= 3.4'
+    const tl2 = new TimelineMax({})
+    tl2
+      .fromTo(
+        bigTitle,
+        1,
+        { x: -100, color: '#OOO', autoAlpha: 0, ease: Power2.easeinOut },
+        {
+          x: 0,
+          color: '#FF0000',
+          autoAlpha: 1,
+          ease: Power2.easeinOut
+        }
       )
-      .to(
-        overLay2,
-        1.5,
-        { y: '-100%', height: 0, ease: Power2.easeinOut },
-        '-= 2.2'
+      .from(H2, 1, { x: +100, autoAlpha: 0, ease: Power2.easeinOut }, '-= 1')
+      .from(UL, 1, { y: -100, autoAlpha: 0, ease: Power2.easeinOut }, '-= 1')
+      .from(H3, 1, { y: 20, autoAlpha: 0, ease: Power2.easeinOut }, '-= 1')
+      .to(Overlay, 1, { x: '100%', ease: Power2.easeinOut }, '-= 1')
+      .from(
+        Scroll,
+        1,
+        { y: 20, autoAlpha: 0, ease: Power2.easeinOut },
+        '-= 1'
       )
-
-    function MainTitle () {
-      const bigTitle = document.querySelector('.main h1')
-      const H2 = document.querySelector('.main h2')
-      const UL = document.querySelector('.main ul')
-      const H3 = document.querySelector('.main h3')
-      const Scroll = document.querySelector('.main .scroll')
-      const Overlay = document.querySelector('.overlayImg')
-
-      const tl2 = new TimelineMax({})
-      tl2
-        .fromTo(
-          bigTitle,
-          1,
-          { x: -100, color: '#OOO', autoAlpha: 0, ease: Power2.easeinOut },
-          {
-            x: 0,
-            color: '#FF0000',
-            autoAlpha: 1,
-            delay: 2.4,
-            ease: Power2.easeinOut
-          }
-        )
-        .from(H2, 1, { x: +100, autoAlpha: 0, ease: Power2.easeinOut }, '-= 1')
-        .from(UL, 1, { y: -100, autoAlpha: 0, ease: Power2.easeinOut }, '-= 1')
-        .from(H3, 1, { y: 20, autoAlpha: 0, ease: Power2.easeinOut }, '-= 1')
-        .to(Overlay, 1, { x: '100%', ease: Power2.easeinOut }, '-= 1')
-        .from(
-          Scroll,
-          1,
-          { y: 20, autoAlpha: 0, ease: Power2.easeinOut },
-          '-= 1'
-        )
-    }
 
     const controller = new ScrollMagic.Controller()
     const SectionActive = document.querySelector('.main')
