@@ -1,5 +1,6 @@
 <template>
-  <div id="app" class="preload">
+  <div id="app">
+
     <svg>
       <circle id="ball" cx="0" cy="0" r="25" />
     </svg>
