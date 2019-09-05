@@ -1,5 +1,5 @@
 <template>
-  <div container-fluid>
+  <div class='viewport'  data-scrollbar container-fluid>
     <div class="overlay-loader">
       <span></span>
       <span></span>
@@ -42,6 +42,7 @@ import ScrollMagic from 'scrollmagic'
 import { TimelineMax, TweenMax, Power2 } from 'gsap/TweenMax'
 import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'
 import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'
+import Scrollbar from 'smooth-scrollbar'
 
 export default {
   data: function () {
@@ -49,6 +50,16 @@ export default {
   },
 
   mounted () {
+
+const scrollEl = document.querySelector('.viewport')
+const scrollbar = Scrollbar.init(scrollEl, {
+  damping: 0.05,
+  continuousScrolling: true,
+});
+
+
+
+
     const tl = new TimelineMax({ onStart: MainTitle })
     const overLay = document.querySelector('.overlay-loader')
     const overLay2 = document.querySelector('.overlay-loader2')

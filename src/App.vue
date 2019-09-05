@@ -43,13 +43,13 @@
       </ul>
     </div>
 
-    <router-view data-scrollbar></router-view>
+    <router-view id="viewport" data-scrollbar ></router-view>
   </div>
 </template>
 
 <script>
 import {TimelineMax, TweenLite, Power2} from 'gsap/all'
-import Scrollbar from 'smooth-scrollbar'
+
 
 
 export default {
@@ -58,11 +58,7 @@ export default {
   mounted () {
 
 
-const scrollEl = document.querySelector('body')
-const scrollbar = Scrollbar.init(scrollEl, {
-  damping: 0.05,
-  continuousScrolling: true,
-});
+
 
 
 

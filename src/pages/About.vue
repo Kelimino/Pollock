@@ -1,5 +1,5 @@
 <template>
-<div container-fluid>
+<div class='viewport'  data-scrollbar container-fluid>
 
 
     <div>
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-
+import Scrollbar from 'smooth-scrollbar'
 
 export default {
   name: 'About',
@@ -48,6 +48,11 @@ export default {
   },
 
   mounted () {
+const scrollEl = document.querySelector('.viewport')
+const scrollbar = Scrollbar.init(scrollEl, {
+  damping: 0.05,
+  continuousScrolling: true,
+});
 
   }
 }
