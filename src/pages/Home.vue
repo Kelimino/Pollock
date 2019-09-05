@@ -32,7 +32,7 @@ import ScrollMagic from 'scrollmagic'
 import { TimelineMax, TweenMax, Power2 } from 'gsap/TweenMax'
 import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'
 import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'
-import Scrollbar from 'smooth-scrollbar'
+// import Scrollbar from 'smooth-scrollbar'
 
 export default {
   name: 'Home',
@@ -41,12 +41,11 @@ export default {
   },
 
   mounted () {
-    const scrollEl = document.querySelector('.viewport')
-    Scrollbar.init(scrollEl, {
-      damping: 0.05,
-      continuousScrolling: true
-    })
-
+    // const scrollEl = document.querySelector('.viewport')
+    // Scrollbar.init(scrollEl, {
+    //   damping: 0.05,
+    //   continuousScrolling: true
+    // })
 
     const bigTitle = document.querySelector('.main h1')
     const H2 = document.querySelector('.main h2')
