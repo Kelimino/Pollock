@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import {TimelineMax,TweenLite, Power2} from 'gsap/all'
+import {TimelineMax, TweenLite, Power2} from 'gsap/all'
 
 export default {
   name: 'App',
