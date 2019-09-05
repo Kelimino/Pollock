@@ -1,8 +1,8 @@
 <template>
-<div>
+<div container-fluid>
 
-  <scrollbar>
-    <div class="scroll-content">
+
+    <div>
              <h1>About Me</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, pariatur eius exercitationem
@@ -30,21 +30,15 @@
 
 
     </div>
-    <div class="scrollbar-track scrollbar-track-x">
-        <div class="scrollbar-thumb scrollbar-thumb-x"></div>
-    </div>
-    <div class="scrollbar-track scrollbar-track-y">
-        <div class="scrollbar-thumb scrollbar-thumb-y"></div>
-    </div>
-</scrollbar>
+   
+
 
 
 </div>
 </template>
 
 <script>
-import Scrollbar from 'smooth-scrollbar'
-Scrollbar.initAll()
+
 
 export default {
   name: 'About',
@@ -54,7 +48,7 @@ export default {
   },
 
   mounted () {
-    
+
   }
 }
 </script>

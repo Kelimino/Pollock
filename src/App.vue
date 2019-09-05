@@ -14,6 +14,10 @@
       <router-link to="/about">About</router-link>
     </nav>
 
+    <div class="scrollbar-track scrollbar-track-y">
+        <div class="scrollbar-thumb scrollbar-thumb-y"></div>
+    </div>
+
     <div class="social">
       <ul>
         <li>
@@ -39,17 +43,29 @@
       </ul>
     </div>
 
-    <router-view></router-view>
+    <router-view data-scrollbar></router-view>
   </div>
 </template>
 
 <script>
 import {TimelineMax, TweenLite, Power2} from 'gsap/all'
+import Scrollbar from 'smooth-scrollbar'
+
 
 export default {
   name: 'App',
 
   mounted () {
+
+
+const scrollEl = document.querySelector('body')
+const scrollbar = Scrollbar.init(scrollEl, {
+  damping: 0.05,
+  continuousScrolling: true,
+});
+
+
+
     const introTl = new TimelineMax({})
 
     const Logo = document.querySelector('.logo')

@@ -121,14 +121,13 @@ export default {
       duration: '30%'
       // reverse: false
     })
-      .setPin(SectionActive, { pushFollowers: false })
       .setTween(
         TweenMax.to(Pollock, 10, { autoAlpha: 0, y: 200, ease: Power2.easeOut })
       )
-      // .addIndicators({
-      //   name: 'Main',
-      //   color: '#FFOOO'
-      // })
+      .addIndicators({
+        name: 'Main',
+        color: '#FFOOO'
+      })
     scene.addTo(controller)
 
     const tlPara = new TimelineMax({})
@@ -144,10 +143,10 @@ export default {
       triggerHook: 200
     })
       .setTween(tlPara)
-      // .addIndicators({
-      //   name: 'Second',
-      //   color: '#FFOOO'
-      // })
+      .addIndicators({
+        name: 'Second',
+        color: '#FFOOO'
+      })
     sceneParallax.addTo(controller)
   }
 }
