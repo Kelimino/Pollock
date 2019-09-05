@@ -1,6 +1,5 @@
 <template>
-  <div class='viewport'  data-scrollbar container-fluid>
-
+  <div class="viewport" data-scrollbar container-fluid>
     <section class="main row">
       <img src="@/assets/img/jackson.jpg" alt="pollock" />
       <div class="overlayImg"></div>
@@ -32,20 +31,19 @@ import ScrollMagic from 'scrollmagic'
 import { TimelineMax, TweenMax, Power2 } from 'gsap/TweenMax'
 import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'
 import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'
-// import Scrollbar from 'smooth-scrollbar'
+import Scrollbar from 'smooth-scrollbar'
 
 export default {
   name: 'Home',
   data: function () {
     return {}
   },
-
   mounted () {
-    // const scrollEl = document.querySelector('.viewport')
-    // Scrollbar.init(scrollEl, {
-    //   damping: 0.05,
-    //   continuousScrolling: true
-    // })
+    const scrollEl = document.querySelector('.viewport')
+    Scrollbar.init(scrollEl, {
+      damping: 0.05,
+      continuousScrolling: true
+    })
 
     const bigTitle = document.querySelector('.main h1')
     const H2 = document.querySelector('.main h2')
@@ -71,12 +69,7 @@ export default {
       .from(UL, 1, { y: -100, autoAlpha: 0, ease: Power2.easeinOut }, '-= 1')
       .from(H3, 1, { y: 20, autoAlpha: 0, ease: Power2.easeinOut }, '-= 1')
       .to(Overlay, 1, { x: '100%', ease: Power2.easeinOut }, '-= 1')
-      .from(
-        Scroll,
-        1,
-        { y: 20, autoAlpha: 0, ease: Power2.easeinOut },
-        '-= 1'
-      )
+      .from(Scroll, 1, { y: 20, autoAlpha: 0, ease: Power2.easeinOut }, '-= 1')
 
     const controller = new ScrollMagic.Controller()
     const SectionActive = document.querySelector('.main')

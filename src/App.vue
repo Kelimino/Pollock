@@ -53,84 +53,83 @@
         </li>
       </ul>
     </div>
-    <transition name="fade">
+    <!-- <transition name="fade"> -->
       <router-view></router-view>
-    </transition>
+    <!-- </transition> -->
   </div>
 </template>
 
 <script>
-import { TimelineMax, TweenLite, Power2 } from "gsap/TweenMax";
+import { TimelineMax, TweenLite, Power2 } from 'gsap/TweenMax'
 
 export default {
-  name: "App",
+  name: 'App',
 
-  mounted() {
-    window.addEventListener("load", introFade());
+  mounted () {
+    window.addEventListener('load', introFade())
 
-    function introFade() {
-      const introTl = new TimelineMax({});
+    function introFade () {
+      const introTl = new TimelineMax({})
 
-      const Logo = document.querySelector(".logo");
-      const Nav = document.querySelector(".menu");
-      const Social = document.querySelector(".social");
+      const Logo = document.querySelector('.logo')
+      const Nav = document.querySelector('.menu')
+      const Social = document.querySelector('.social')
 
       introTl
         .from(Logo, 1, { autoAlpha: 0, y: -50, delay: 3, ease: Power2.easeOut })
-        .from(Nav, 1, { autoAlpha: 0, y: -50, ease: Power2.easeOut }, "-= 1.2")
+        .from(Nav, 1, { autoAlpha: 0, y: -50, ease: Power2.easeOut }, '-= 1.2')
         .from(
           Social,
           1,
           { autoAlpha: 0, y: 50, ease: Power2.easeOut },
-          "-= 1.2"
-        );
+          '-= 1.2'
+        )
     }
 
-    const ease = 0.15;
+    const ease = 0.15
 
-    const ball = document.querySelector("#ball");
-    const pos = { x: 0, y: 0 };
-    const mouse = { x: 0, y: 0 };
+    const ball = document.querySelector('#ball')
+    const pos = { x: 0, y: 0 }
+    const mouse = { x: 0, y: 0 }
 
-    window.addEventListener("mousemove", e => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    });
+    window.addEventListener('mousemove', e => {
+      mouse.x = e.clientX
+      mouse.y = e.clientY
+    })
 
-    TweenLite.ticker.addEventListener("tick", update);
+    TweenLite.ticker.addEventListener('tick', update)
 
-    function update() {
-      pos.x += (mouse.x - pos.x) * ease;
-      pos.y += (mouse.y - pos.y) * ease;
+    function update () {
+      pos.x += (mouse.x - pos.x) * ease
+      pos.y += (mouse.y - pos.y) * ease
 
-      ball.setAttribute("cx", pos.x);
-      ball.setAttribute("cy", pos.y);
+      ball.setAttribute('cx', pos.x)
+      ball.setAttribute('cy', pos.y)
     }
 
-    const tl = new TimelineMax({});
-    const overLay = document.querySelector(".overlay-loader");
-    const overLay2 = document.querySelector(".overlay-loader2");
-    const spanLine = document.querySelectorAll(".overlay-loader span");
+    const tl = new TimelineMax({})
+    const overLay = document.querySelector('.overlay-loader')
+    const overLay2 = document.querySelector('.overlay-loader2')
+    const spanLine = document.querySelectorAll('.overlay-loader span')
 
     tl.staggerFromTo(
       spanLine,
       3,
-      { height: "100vh", autoAlpha: 1 },
+      { height: '100vh', autoAlpha: 1 },
       { y: -100, height: 0, autoAlpha: 0, ease: Power2.easeOut }
     )
       .to(
         overLay,
         1.5,
-        { y: "-100%", height: 0, delay: 1, ease: Power2.easeinOut },
-        "-= 3.4"
+        { y: '-100%', height: 0, delay: 1, ease: Power2.easeinOut },
+        '-= 3.4'
       )
       .to(
         overLay2,
         1.5,
-        { y: "-100%", height: 0, ease: Power2.easeinOut },
-        "-= 2.2"
-      );
+        { y: '-100%', height: 0, ease: Power2.easeinOut },
+        '-= 2.2'
+      )
   }
-};
+}
 </script>
-
