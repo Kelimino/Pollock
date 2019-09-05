@@ -66,29 +66,20 @@ export default {
   name: 'App',
 
   mounted () {
-
-
     window.addEventListener('load', introFade())
-    function introFade(e){
-    const introTl = new TimelineMax({})
 
-    const Logo = document.querySelector('.logo')
-    const Menu = document.querySelector('.menu')
-    const Social = document.querySelector('.social')
+    function introFade () {
+      const introTl = new TimelineMax({})
 
-    introTl
-      .from(Logo, 1, { autoAlpha: 0, y: -50, delay: 3, ease: Power2.easeOut })
-      .from(Menu, 1, { autoAlpha: 0, y: -50, ease: Power2.easeOut }, '-= 1.2')
-      .from(Social, 1, { autoAlpha: 0, y: 50, ease: Power2.easeOut }, '-= 1.2');
-  
+      const Logo = document.querySelector('.logo')
+      const Nav = document.querySelector('.menu')
+      const Social = document.querySelector('.social')
 
-
+      introTl
+        .from(Logo, 1, { autoAlpha: 0, y: -50, delay: 3, ease: Power2.easeOut })
+        .from(Nav, 1, { autoAlpha: 0, y: -50, ease: Power2.easeOut }, '-= 1.2')
+        .from(Social, 1, { autoAlpha: 0, y: 50, ease: Power2.easeOut }, '-= 1.2')
     }
-
-
-    Menu.addEventListener('click', e => {
-      console.log(e.target)
-    })
 
     const ease = 0.15
 

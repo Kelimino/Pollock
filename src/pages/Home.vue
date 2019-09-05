@@ -47,6 +47,7 @@ export default {
       continuousScrolling: true
     })
 
+
     const bigTitle = document.querySelector('.main h1')
     const H2 = document.querySelector('.main h2')
     const UL = document.querySelector('.main ul')
