@@ -53,9 +53,9 @@
         </li>
       </ul>
     </div>
-    <!-- <transition name="fade"> -->
+    <transition name="fade" mode="out-in">
       <router-view></router-view>
-    <!-- </transition> -->
+    </transition>
   </div>
 </template>
 
@@ -106,6 +106,11 @@ export default {
       ball.setAttribute('cx', pos.x)
       ball.setAttribute('cy', pos.y)
     }
+
+    const Nav = document.querySelector('.menu')
+    Nav.addEventListener('mouseenter', () => {
+      ball.classList.toggle('hover')
+    })
 
     const tl = new TimelineMax({})
     const overLay = document.querySelector('.overlay-loader')

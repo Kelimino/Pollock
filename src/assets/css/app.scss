@@ -123,6 +123,15 @@ svg {
   fill: rgba(255, 0, 0,0.7);
 }
 
+.hover{
+
+
+     fill: rgba(0, 0, 0,0.7);
+     color: #FFF;
+     display: block;
+
+}
+
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.25s ease-out;
 }
