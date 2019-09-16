@@ -82,16 +82,16 @@ export default {
       offset: 100,
       triggerElement: SectionActive,
       triggerHook: 0,
-      duration: '30%'
+      duration: '100%',
       // reverse: false
     })
       .setTween(
         TweenMax.to(Pollock, 10, { autoAlpha: 0, y: 200, ease: Power2.easeOut })
       )
-      .addIndicators({
-        name: 'Main',
-        color: '#FFOOO'
-      })
+      // .addIndicators({
+      //   name: 'Main',
+      //   color: '#FFOOO'
+      // })
     scene.addTo(controller)
 
     const tlPara = new TimelineMax({})
@@ -107,10 +107,10 @@ export default {
       triggerHook: 200
     })
       .setTween(tlPara)
-      .addIndicators({
-        name: 'Second',
-        color: '#FFOOO'
-      })
+      // .addIndicators({
+      //   name: 'Second',
+      //   color: '#FFOOO'
+      // })
     sceneParallax.addTo(controller)
   }
 }
