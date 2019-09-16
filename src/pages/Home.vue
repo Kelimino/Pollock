@@ -82,7 +82,7 @@ export default {
       offset: 100,
       triggerElement: SectionActive,
       triggerHook: 0,
-      duration: '100%',
+      duration: '100%'
       // reverse: false
     })
       .setTween(
