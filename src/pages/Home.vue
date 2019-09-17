@@ -10,7 +10,7 @@
       </ul>
       <h1>Jackson pollock</h1>
       <h2>12'52</h2>
-      <h3>The greatest abtract Artist</h3>
+      <h3>The greatest abstract Artist</h3>
       <div class="scroll">
         Scroll
         <span></span>
@@ -20,8 +20,8 @@
     <section class="second row parallax">
       <div class="back"></div>
       <div class="content">
-        <h2>Jackson pollock, his marvellous work</h2>
-        <p>A one of a find painter with a speacila technic, the dropping</p>
+        <h2>The story of a legend</h2>
+        <p>A one of a find artist</p>
       </div>
     </section>
   </div>
@@ -97,8 +97,8 @@ export default {
     const tlPara = new TimelineMax({})
 
     tlPara
-      .from(ContenPara, 5, { y: -1000, autoAlpha: 0, ease: Power2.easeOut })
-      .from(imgPara, 2, { y: '-50%', width: '150%', ease: Power2.easeOut }, 0)
+      .from(ContenPara, 3, { y: -200, autoAlpha: 0, ease: Power2.easeOut })
+      .from(imgPara, 2, { y: '-50%', scaleX:'1.1', autoAlpha:0, ease: Power2.easeOut }, 0)
 
     const sceneParallax = new ScrollMagic.Scene({
       offset: 200,

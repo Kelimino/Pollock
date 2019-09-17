@@ -1,34 +1,32 @@
 <template>
   <div class="viewport" data-scrollbar container-fluid>
     <div class="about">
-      <h1>About Me</h1>
+      <h1>Works</h1>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, pariatur eius exercitationem
-        iusto facere sapiente iste neque cum dolore sunt laborum ad illum nobis eum quam deserunt?
-        Veritatis, dolorum voluptates!
+        Some of his best paintings
       </p>
 
       <div class="content">
         <div class="img-container img1" data-scrollbar>
           <img src="@/assets/img/pol1.jpg" alt />
 
-          <div class="tag"><h2>Jackon Pollock version 1</h2>
+          <div class="tag"><h2>Jackson Pollock version 1</h2>
           <p>acrylic on canvas 1945</p></div>
 
         </div>
         <div class="img-container img2">
           <img src="@/assets/img/pol2.jpg" alt />
-          <div class="tag"><h2>Jackon Pollock version 2</h2>
+          <div class="tag"><h2>Jackson Pollock version 2</h2>
           <p>acrylic on canvas 1946</p></div>
         </div>
         <div class="img-container img3">
           <img src="@/assets/img/pol3.jpg" alt />
-          <div class="tag"><h2>Jackon Pollock version 3</h2>
+          <div class="tag"><h2>Jackson Pollock version 3</h2>
           <p>acrylic on canvas 1948</p></div>
         </div>
         <div class="img-container img4">
           <img src="@/assets/img/pol4.jpg" alt />
-          <div class="tag"><h2>Jackon Pollock version 4</h2>
+          <div class="tag"><h2>Jackson Pollock version 4</h2>
           <p>acrylic on canvas 1949</p></div>
         </div>
         <!--  REPEAT  -->
