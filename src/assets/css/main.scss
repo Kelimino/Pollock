@@ -232,7 +232,8 @@
   .back{
     
     position: absolute;
-    top:0;
+    top: 50%;
+    left: 50%;
     z-index: 1;
     opacity: 1.2;
     background: url('~@/assets/img/studio.jpg') center no-repeat;
@@ -247,7 +248,6 @@
   
   .content{
     
-    position: relative;
     z-index: 2;
     display: flex;
     justify-content: center;
