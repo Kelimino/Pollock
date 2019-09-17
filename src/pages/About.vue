@@ -1,6 +1,6 @@
 <template>
   <div class="viewport" data-scrollbar container-fluid>
-    <div>
+    <div class="about">
       <h1>About Me</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, pariatur eius exercitationem
@@ -8,28 +8,28 @@
         Veritatis, dolorum voluptates!
       </p>
 
-      <h3>Let's trigger this here modal!</h3>
-      <button @click="toggleShow">
-        <span v-if="isShowing">Hide child</span>
-        <span v-else>Show child</span>
-      </button>
-      <div v-if="isShowing" class="modal">
-        <p>Hello i am here !</p>
-        <button @click="toggleShow">Close</button>
-      </div>
-
       <div class="content">
-        <div class="img-container" data-scrollbar>
+        <div class="img-container img1" data-scrollbar>
           <img src="@/assets/img/pol1.jpg" alt />
+
+          <div class="tag"><h2>Jackon Pollock version 1</h2>
+          <p>acrylic on canvas 1945</p></div>
+
         </div>
-        <div class="img-container">
+        <div class="img-container img2">
           <img src="@/assets/img/pol2.jpg" alt />
+          <div class="tag"><h2>Jackon Pollock version 1</h2>
+          <p>acrylic on canvas 1945</p></div>
         </div>
-        <div class="img-container">
+        <div class="img-container img3">
           <img src="@/assets/img/pol3.jpg" alt />
+          <div class="tag"><h2>Jackon Pollock version 1</h2>
+          <p>acrylic on canvas 1945</p></div>
         </div>
-        <div class="img-container">
+        <div class="img-container img4">
           <img src="@/assets/img/pol4.jpg" alt />
+          <div class="tag"><h2>Jackon Pollock version 1</h2>
+          <p>acrylic on canvas 1945</p></div>
         </div>
         <!--  REPEAT  -->
       </div>
@@ -39,6 +39,10 @@
 
 <script>
 import Scrollbar from 'smooth-scrollbar'
+import ScrollMagic from 'scrollmagic'
+import { TweenMax, Power2 } from 'gsap/TweenMax'
+import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'
+import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'
 
 export default {
   name: 'About',
@@ -59,6 +63,56 @@ export default {
       damping: 0.05,
       continuousScrolling: true
     })
+
+    const controller = new ScrollMagic.Controller()
+
+    let scene = new ScrollMagic.Scene({
+      offset: -200,
+      triggerElement: '.img1',
+      triggerHook: 0,
+      duration: '70%'
+    })
+      .setTween(
+        TweenMax.from('.img1 .tag', 2, { autoAlpha: 0, y: -20, ease: Power2.easeOut })
+
+      )
+    scene.addTo(controller)
+
+    let scene1 = new ScrollMagic.Scene({
+      offset: -200,
+      triggerElement: '.img2',
+      triggerHook: 0,
+      duration: '70%'
+    })
+      .setTween(
+        TweenMax.from('.img2 .tag', 2, { autoAlpha: 0, y: -20, ease: Power2.easeOut })
+
+      )
+    scene1.addTo(controller)
+
+    let scene2 = new ScrollMagic.Scene({
+      offset: -200,
+      triggerElement: '.img3',
+      triggerHook: 0,
+      duration: '70%'
+    })
+      .setTween(
+        TweenMax.from('.img3 .tag', 2, { autoAlpha: 0, y: -20, ease: Power2.easeOut })
+
+      )
+    scene2.addTo(controller)
+
+    let scene3 = new ScrollMagic.Scene({
+      offset: -200,
+      triggerElement: '.img4',
+      triggerHook: 0,
+      duration: '70%'
+    })
+      .setTween(
+        TweenMax.from('.img4 .tag', 2, { autoAlpha: 0, y: -20, ease: Power2.easeOut })
+
+      )
+    scene3.addTo(controller)
   }
 }
 </script>
