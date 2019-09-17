@@ -269,6 +269,20 @@
       text-align: center;
       color: #000;
     }
+
+    a {
+
+      width: 200px;
+      height: 50px;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #FFF;
+      text-decoration: none;
+
+
+    }
   }  
 }
 
@@ -342,4 +356,10 @@
 
       }
   }
+}
+.aboutLeave-enter-active {
+  background: red;
+}
+.aboutLeave-leave-active {
+  background: red;
 }

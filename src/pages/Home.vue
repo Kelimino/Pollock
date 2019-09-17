@@ -22,6 +22,12 @@
       <div class="content">
         <h2>The story of a legend</h2>
         <p>A one of a find artist</p>
+        <transition
+          name='aboutLeave'
+          mode="out-in"
+        >
+          <router-link to="/about">About</router-link>
+        </transition>
       </div>
     </section>
   </div>
@@ -38,6 +44,14 @@ export default {
   data: function () {
     return {}
   },
+
+  methods: {
+    leave: function (el, done) {
+      el.style.opacity = 0
+      done()
+    }
+  },
+
   mounted () {
     const scrollEl = document.querySelector('.viewport')
     Scrollbar.init(scrollEl, {
@@ -84,33 +98,36 @@ export default {
       triggerHook: 0,
       duration: '100%'
       // reverse: false
-    })
-      .setTween(
-        TweenMax.to(Pollock, 10, { autoAlpha: 0, y: 200, ease: Power2.easeOut })
-      )
-      // .addIndicators({
-      //   name: 'Main',
-      //   color: '#FFOOO'
-      // })
+    }).setTween(
+      TweenMax.to(Pollock, 10, { autoAlpha: 0, y: 200, ease: Power2.easeOut })
+    )
+    // .addIndicators({
+    //   name: 'Main',
+    //   color: '#FFOOO'
+    // })
     scene.addTo(controller)
 
     const tlPara = new TimelineMax({})
 
     tlPara
       .from(ContenPara, 3, { y: -200, autoAlpha: 0, ease: Power2.easeOut })
-      .from(imgPara, 2, { y: '-50%', scaleX:'1.1', autoAlpha:0, ease: Power2.easeOut }, 0)
+      .from(
+        imgPara,
+        2,
+        { y: '-50%', scaleX: '1.1', autoAlpha: 0, ease: Power2.easeOut },
+        0
+      )
 
     const sceneParallax = new ScrollMagic.Scene({
       offset: 200,
       duration: '100%',
       triggerElement: SectionActive2,
       triggerHook: 200
-    })
-      .setTween(tlPara)
-      // .addIndicators({
-      //   name: 'Second',
-      //   color: '#FFOOO'
-      // })
+    }).setTween(tlPara)
+    // .addIndicators({
+    //   name: 'Second',
+    //   color: '#FFOOO'
+    // })
     sceneParallax.addTo(controller)
   }
 }
