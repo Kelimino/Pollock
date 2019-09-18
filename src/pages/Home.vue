@@ -44,14 +44,6 @@ export default {
   data: function () {
     return {}
   },
-
-  methods: {
-    leave: function (el, done) {
-      el.style.opacity = 0
-      done()
-    }
-  },
-
   mounted () {
     const scrollEl = document.querySelector('.viewport')
     Scrollbar.init(scrollEl, {
