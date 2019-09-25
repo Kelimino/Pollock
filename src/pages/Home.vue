@@ -22,12 +22,10 @@
       <div class="content">
         <h2>The story of a legend</h2>
         <p>A one of a find artist</p>
-        <transition
-          name='aboutLeave'
-          mode="out-in"
-        >
-          <router-link to="/about">About</router-link>
-        </transition>
+
+        <transition name="leave" mode="in-out">
+          <router-link to="/about" @click="active =! active">About</router-link>
+         </transition>
       </div>
     </section>
   </div>
@@ -42,8 +40,12 @@ import Scrollbar from 'smooth-scrollbar'
 export default {
   name: 'Home',
   data: function () {
-    return {}
+    return {
+
+      active: false
+    }
   },
+
   mounted () {
     const scrollEl = document.querySelector('.viewport')
     Scrollbar.init(scrollEl, {

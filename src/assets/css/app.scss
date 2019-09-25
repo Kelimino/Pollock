@@ -134,6 +134,7 @@ svg {
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.25s ease-out;
+  
 
 
 }
@@ -143,4 +144,17 @@ svg {
 
 
 
+
+
+}
+
+.leave-enter-to,
+.leave-leave {
+  width:200px;
+  background: red;
+}
+
+.leave-enter-active,
+.leave-leave-active {
+  transition: opacity, transform 200ms ease-out;
 }

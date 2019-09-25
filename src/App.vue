@@ -65,6 +65,18 @@ import { TimelineMax, TweenLite, Power2 } from 'gsap/TweenMax'
 export default {
   name: 'App',
 
+  methods: {
+
+    enter () {
+
+    },
+
+    leave () {
+
+    }
+
+  },
+
   mounted () {
     window.addEventListener('load', introFade())
 
@@ -87,7 +99,6 @@ export default {
     }
 
     const ease = 0.15
-
     const ball = document.querySelector('#ball')
     const pos = { x: 0, y: 0 }
     const mouse = { x: 0, y: 0 }

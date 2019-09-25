@@ -6,6 +6,7 @@
         Some of his best paintings
       </p>
 
+
       <div class="content">
         <div class="img-container img1" data-scrollbar>
           <img src="@/assets/img/pol1.jpg" alt />
@@ -46,7 +47,7 @@ export default {
   name: 'About',
   data: function () {
     return {
-      isShowing: false
+      isShowing: false,
     }
   },
 
