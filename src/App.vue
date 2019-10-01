@@ -78,6 +78,16 @@ export default {
   },
 
   mounted () {
+    const linkActive = document.querySelectorAll('a')
+    const mousActive = document.querySelector('svg')
+    console.log(linkActive)
+
+    for (let link of linkActive) {
+      link.addEventListener('mouseenter', () => {
+        mousActive.classList.toggle('active')
+      })
+    }
+
     window.addEventListener('load', introFade())
 
     function introFade () {

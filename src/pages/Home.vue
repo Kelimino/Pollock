@@ -47,6 +47,12 @@ export default {
   },
 
   mounted () {
+    const LinkActive = document.querySelectorAll('a')
+    const mousActive = document.querySelectorAll('svg')
+
+    LinkActive.addEventListener('mouseenter', () => {
+      mousActive.style.opacity = '0'
+    })
     const scrollEl = document.querySelector('.viewport')
     Scrollbar.init(scrollEl, {
       damping: 0.05,
