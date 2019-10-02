@@ -23,7 +23,7 @@
         <h2>The story of a legend</h2>
         <p>A one of a find artist</p>
 
-        <transition name="leave" mode="in-out">
+        <transition name="aboutLink" mode="out-in">
           <router-link to="/about" @click="active =! active">About</router-link>
          </transition>
       </div>
@@ -47,12 +47,6 @@ export default {
   },
 
   mounted () {
-    const LinkActive = document.querySelectorAll('a')
-    const mousActive = document.querySelectorAll('svg')
-
-    LinkActive.addEventListener('mouseenter', () => {
-      mousActive.style.opacity = '0'
-    })
     const scrollEl = document.querySelector('.viewport')
     Scrollbar.init(scrollEl, {
       damping: 0.05,
